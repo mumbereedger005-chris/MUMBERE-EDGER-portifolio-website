@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!-- DOCTYPE must be the first line — tells the browser to use HTML5 rules -->
+
+<html lang="en">
+<!-- lang="en" helps screen readers and search engines know the page is in English -->
+
+<head>
+  <!-- ============================================================
+       HEAD SECTION — invisible settings and links
+  ============================================================ -->
+
+  <!-- UTF-8 character set — handles all letters, symbols, and special characters -->
+  <meta charset="UTF-8" />
+
+  <!-- Responsive viewport — stops mobile browsers from zooming out by default -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Browser tab title -->
+  <title>Contact | Mumbere Edger</title>
+
+  <!-- Bootstrap 5 — grid layout, form styles, utility classes -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons — all icons used with <i class="bi bi-..."></i> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Inter — the font used across the entire site -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Our custom stylesheet — all unique colors, card styles, form styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Same on every page — "active" is on "Contact" here.
+  ============================================================ -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+
+      <!-- Site brand / logo — always links to home page -->
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>
+        <span>Mumbere</span> <span style="color:var(--gold);">Edger</span>
+      </a>
+
+      <!-- Hamburger button — only visible on small screens.
+           data-bs-target="#mainNav" connects it to the nav links below -->
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+
+      <!-- Navigation links — hidden on mobile until hamburger is clicked -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <!-- "active" highlights Contact because this IS contact.html -->
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <!-- END NAVBAR -->
+
+
+  <!-- ============================================================
+       PAGE HEADER BANNER
+       Dark gradient banner with page title and breadcrumb.
+  ============================================================ -->
+  <section class="page-header">
+    <!-- ph-content is raised above the dark overlay using z-index in CSS -->
+    <div class="ph-content container">
+      <h1>Contact Me</h1>
+      <p class="lead mt-2">I'd love to hear from you — let's connect and collaborate</p>
+
+      <!-- Breadcrumb: "Home > Contact" -->
+      <nav aria-label="breadcrumb" class="mt-3">
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Contact</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+  <!-- END PAGE HEADER -->
+
+
+  <!-- ============================================================
+       SECTION 1: CONTACT INFORMATION + CONTACT FORM
+       Two columns side by side on large screens:
+       - Left (col-lg-5):  contact info cards
+       - Right (col-lg-7): styled contact form
+  ============================================================ -->
+  <section>
+    <div class="container">
+      <div class="row g-5 align-items-start">
+
+
+        <!-- =====================================================
+             LEFT COLUMN: Contact Information Cards
+             Each card shows one piece of contact info:
+             icon + label + value
+        ===================================================== -->
+        <div class="col-lg-5">
+          <h2 class="mb-1">Get In Touch</h2>
+          <!-- Colored underline divider -->
+          <div class="divider mb-4"></div>
+
+          <p style="color:var(--muted); font-size:0.95rem; margin-bottom:1.6rem;">
+            Whether you have a question, a project idea, or just want to say hello —
+            feel free to reach out. I am always open to meaningful conversations and
+            new opportunities.
+          </p>
+
+          <!-- CONTACT CARD: Email
+               .ci-card = info card styled in style.css (hover shifts right + teal border)
+               .ci-icon.teal = rounded square with teal background -->
+          <div class="ci-card">
+            <div class="ci-icon teal">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+            <div>
+              <h6>University Email</h6>
+              <!-- mailto: opens the default email app when clicked -->
+              <a href="mailto:edger@bugema.ac.ug">edger@bugema.ac.ug</a>
+            </div>
+          </div>
+
+          <!-- CONTACT CARD: Phone -->
+          <div class="ci-card">
+            <div class="ci-icon gold">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <div>
+              <h6>Phone Number</h6>
+              <!-- tel: opens the phone dialer on mobile devices when clicked -->
+              <a href="tel:+256700000000">+256 700 000 000</a>
+              <!-- Small note below the number -->
+              <p class="mt-1" style="font-size:0.8rem; color:var(--muted);">
+                Available Mon – Fri, 8 am – 6 pm EAT
+              </p>
+            </div>
+          </div>
+
+          <!-- CONTACT CARD: Physical Location -->
+          <div class="ci-card">
+            <div class="ci-icon navy">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <div>
+              <h6>Location</h6>
+              <p>Bugema University — Kampala Campus</p>
+              <p>Kampala, Uganda, East Africa</p>
+            </div>
+          </div>
+
+          <!-- CONTACT CARD: LinkedIn -->
+          <div class="ci-card">
+            <div class="ci-icon purple">
+              <i class="bi bi-linkedin"></i>
+            </div>
+            <div>
+              <h6>LinkedIn</h6>
+              <!-- Replace # with your actual LinkedIn profile URL -->
+              <a href="#">linkedin.com/in/mumbere-edger</a>
+            </div>
+          </div>
+
+          <!-- CONTACT CARD: GitHub -->
+          <div class="ci-card">
+            <div class="ci-icon navy">
+              <i class="bi bi-github"></i>
+            </div>
+            <div>
+              <h6>GitHub</h6>
+              <!-- Replace # with your actual GitHub profile URL -->
+              <a href="#">github.com/mumbere-edger</a>
+            </div>
+          </div>
+
+        </div><!-- end left column -->
+
+
+        <!-- =====================================================
+             RIGHT COLUMN: Contact Form
+             .cf-card = white card with shadow (styled in style.css)
+             The form uses action="#" as a placeholder — in a real
+             site you would replace # with a server URL or a service
+             like Formspree (https://formspree.io).
+        ===================================================== -->
+        <div class="col-lg-7">
+          <div class="cf-card">
+            <h4>Send Me a Message</h4>
+            <p class="sub">Fill in the form below and I will get back to you as soon as possible.</p>
+
+            <!-- action="#" = no real server yet — replace when you have a backend.
+                 method="post" = sends data securely (not visible in the URL).
+                 novalidate = we rely on HTML5 built-in validation shown below -->
+            <form action="#" method="post" novalidate>
+              <!-- Bootstrap's row g-3 adds even spacing between all form fields -->
+              <div class="row g-3">
+
+                <!-- FIELD 1: Full Name
+                     col-md-6 = half-width on medium+ screens, full-width on mobile -->
+                <div class="col-md-6">
+                  <!-- <label> links to the input using the "for" attribute matching the input "id" -->
+                  <label for="fullName" class="form-label">
+                    Full Name <span style="color:#dc3545;">*</span>
+                    <!-- The red * tells the user this field is required -->
+                  </label>
+                  <!-- type="text" = accepts any text.
+                       required   = browser won't submit if this is empty.
+                       placeholder = hint text inside the empty field -->
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                <!-- FIELD 2: Email Address -->
+                <div class="col-md-6">
+                  <label for="emailAddress" class="form-label">
+                    Email Address <span style="color:#dc3545;">*</span>
+                  </label>
+                  <!-- type="email" = browser validates that it looks like an email address -->
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="emailAddress"
+                    name="emailAddress"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+
+                <!-- FIELD 3: Subject — full width (col-12 = all 12 columns) -->
+                <div class="col-12">
+                  <label for="subject" class="form-label">
+                    Subject <span style="color:#dc3545;">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    name="subject"
+                    placeholder="What is this about?"
+                    required
+                  />
+                </div>
+
+                <!-- FIELD 4: Message — uses <textarea> for multi-line text.
+                     rows="6" sets the visible height (6 lines tall) -->
+                <div class="col-12">
+                  <label for="message" class="form-label">
+                    Message <span style="color:#dc3545;">*</span>
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Write your message here..."
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- FIELD 5: Submit Button
+                     type="submit" = clicking this sends the form.
+                     .btn-submit = our custom teal gradient button from style.css -->
+                <div class="col-12">
+                  <button type="submit" class="btn-submit">
+                    <i class="bi bi-send me-2"></i>Send Message
+                  </button>
+                </div>
+
+              </div><!-- end .row g-3 -->
+            </form><!-- end <form> -->
+
+          </div><!-- end .cf-card -->
+        </div><!-- end right column -->
+
+      </div><!-- end .row (two main columns) -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END CONTACT INFO + FORM SECTION -->
+
+
+  <!-- ============================================================
+       SECTION 2: EMBEDDED MAP
+       Uses a Google Maps <iframe> to show the campus location.
+       The ratio wrapper keeps the map at the right height on all screens.
+       The map URL was generated from Google Maps → Share → Embed a map.
+  ============================================================ -->
+  <section class="bg-light-custom">
+    <div class="container">
+
+      <!-- Section heading -->
+      <div class="text-center mb-5">
+        <h2>Find Me Here</h2>
+        <p class="sub-text mt-2">Bugema University — Kampala Campus, Kampala, Uganda</p>
+        <div class="divider mx-auto mt-3"></div>
+      </div>
+
+      <!-- .map-wrap = teal border + rounded corners + shadow (from style.css) -->
+      <div class="map-wrap">
+
+        <!-- --bs-aspect-ratio: 42% keeps the map at a good height.
+             Changing this % makes the map taller or shorter. -->
+        <div class="ratio" style="--bs-aspect-ratio: 42%;">
+
+          <!-- GOOGLE MAPS IFRAME
+               src     = the embed URL from Google Maps (shows Bugema University)
+               title   = describes the map for screen readers (accessibility)
+               loading = "lazy" means the map only loads when the user scrolls to it
+               allowfullscreen = lets the map go fullscreen when clicked -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127672.35954498944!2d32.5084741812499!3d0.3152408!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc0f9d74b39b%3A0x37e0b0f8f1b22b08!2sBugema%20University%20Kampala%20Campus!5e0!3m2!1sen!2sug!4v1700000000000!5m2!1sen!2sug"
+            width="100%"
+            height="100%"
+            style="border:0; display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Bugema University Kampala Campus on Google Maps"
+            aria-label="Google Maps showing Bugema University Kampala Campus">
+          </iframe>
+
+        </div><!-- end .ratio -->
+
+        <!-- Footer bar below the map — shows address and a link to open Google Maps -->
+        <div class="map-footer">
+          <!-- Location pin icon (teal color from CSS) -->
+          <i class="bi bi-geo-alt-fill"></i>
+          <div>
+            <strong style="color:var(--white);">Bugema University — Kampala Campus</strong>
+            <br>
+            <span style="font-size:0.82rem; color:rgba(255,255,255,0.55);">Kampala, Uganda, East Africa</span>
+          </div>
+          <!-- Link to open the map in full Google Maps — target="_blank" opens a new tab -->
+          <a href="https://maps.google.com/?q=Bugema+University+Kampala+Campus"
+             target="_blank" rel="noopener noreferrer">
+            <!-- rel="noopener noreferrer" is a security best practice for external links -->
+            <i class="bi bi-box-arrow-up-right me-1"></i>Open in Maps
+          </a>
+        </div><!-- end .map-footer -->
+
+      </div><!-- end .map-wrap -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END MAP SECTION -->
+
+
+  <!-- ============================================================
+       FOOTER — identical on every page
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-3">
+
+        <!-- Bio column -->
+        <div class="col-md-4">
+          <h5 class="mb-3">
+            <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>Mumbere Edger
+          </h5>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.55);">
+            IT Student at Bugema University, Kampala Campus. Passionate about
+            technology and building meaningful digital experiences.
+          </p>
+        </div>
+
+        <!-- Quick navigation links column -->
+        <div class="col-md-4">
+          <h6 class="mb-3">Quick Links</h6>
+          <a href="index.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>About Me</a>
+          <a href="gallery.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="contact.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>Contact</a>
+        </div>
+
+        <!-- Social media icons column -->
+        <div class="col-md-4">
+          <h6 class="mb-3">Connect With Me</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" title="GitHub"><i class="bi bi-github"></i></a>
+            <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <!-- mailto: pre-fills your email address in the user's email app -->
+            <a href="mailto:edger@bugema.ac.ug" class="social-link" title="Email">
+              <i class="bi bi-envelope-fill"></i>
+            </a>
+          </div>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">
+            <i class="bi bi-geo-alt me-1" style="color:var(--teal);"></i>Kampala, Uganda
+          </p>
+        </div>
+
+      </div><!-- end footer columns -->
+
+      <!-- Horizontal rule (thin line) separating content from copyright -->
+      <hr />
+
+      <!-- &copy; produces the © copyright symbol -->
+      <p class="copy">&copy; 2026 Mumbere Edger. All rights reserved. | Bugema University — Kampala Campus</p>
+
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- ============================================================
+       BOOTSTRAP JS BUNDLE
+       Placed at the END of <body> so the page loads faster
+       (HTML and CSS are parsed before the script runs).
+       Required for the mobile hamburger menu to open/close.
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

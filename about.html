@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<!-- DOCTYPE tells the browser this is an HTML5 document -->
+
+<html lang="en">
+<!-- lang="en" declares the page language as English (helps screen readers and search engines) -->
+
+<head>
+  <!-- ============================================================
+       HEAD SECTION — settings and external file links (not visible on page)
+  ============================================================ -->
+
+  <!-- UTF-8 supports all characters, symbols, and accented letters -->
+  <meta charset="UTF-8" />
+
+  <!-- Makes the layout responsive on phones and tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title shown on the browser tab -->
+  <title>About Me | Mumbere Edger</title>
+
+  <!-- Bootstrap 5 CSS — grid system, utility classes, navbar, table, badges, etc. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons — icon library used with <i class="bi bi-..."></i> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts: Inter — clean, modern font used across the whole site -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Our custom stylesheet — colors, card styles, timeline, progress bars, etc. -->
+  <link rel="stylesheet" href="css/style.css" />
+
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION BAR
+       Identical across all pages — sticky-top keeps it at the top
+       while scrolling. "active" is set on the "About" link here.
+  ============================================================ -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+
+      <!-- Brand / site logo — always links back to the home page -->
+      <a class="navbar-brand fw-bold" href="index.html">
+        <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>
+        <span>Mumbere</span> <span style="color:var(--gold);">Edger</span>
+      </a>
+
+      <!-- Hamburger button — shown only on small screens to open/close the menu -->
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+
+      <!-- Navigation links — collapse on mobile, expand on large screens -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <!-- "active" highlights About because this IS the About page -->
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <!-- END NAVBAR -->
+
+
+  <!-- ============================================================
+       PAGE HEADER BANNER
+       A dark banner just below the navbar showing the page title.
+       Used on all inner pages (about, gallery, contact).
+       The ::after overlay in style.css adds a dark semi-transparent
+       layer on top of the gradient so text stays readable.
+  ============================================================ -->
+  <section class="page-header">
+    <!-- ph-content sits above the overlay using position relative + z-index in CSS -->
+    <div class="ph-content container">
+      <h1>About Me</h1>
+      <p class="lead mt-2">Get to know who I am, where I come from, and where I am headed</p>
+
+      <!-- Breadcrumb navigation — shows the path: Home > About -->
+      <nav aria-label="breadcrumb" class="mt-3">
+        <ol class="breadcrumb justify-content-center">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <!-- aria-current="page" tells screen readers this is the current page -->
+          <li class="breadcrumb-item active" aria-current="page">About</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+  <!-- END PAGE HEADER -->
+
+
+  <!-- ============================================================
+       SECTION 1: BIOGRAPHY / PROFILE SUMMARY
+       Two columns: left = dark profile card, right = biography text.
+       align-items-start keeps both columns aligned to the top.
+  ============================================================ -->
+  <section>
+    <div class="container">
+      <div class="row g-5 align-items-start">
+
+        <!-- LEFT COLUMN: Profile card (4 of 12 columns on large screens) -->
+        <div class="col-lg-4">
+          <!-- profile-box is our dark navy card styled in style.css -->
+          <div class="profile-box">
+
+            <!-- Circular avatar — teal ring border defined in .avatar-ring CSS -->
+            <div class="avatar-ring">
+              <!-- Large person icon — swap for a real <img> tag when you have a photo:
+                   <img src="media/photos/my-photo.jpg" alt="Mumbere Edger"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:50%;"> -->
+              <i class="bi bi-person-circle"></i>
+            </div>
+
+            <!-- Name, role, and location under the avatar -->
+            <h3>Mumbere Edger</h3>
+            <p class="role mt-1">IT Student &amp; Aspiring Developer</p>
+            <!-- &amp; is the HTML code for the & character -->
+            <p class="loc mt-1 mb-3">
+              <i class="bi bi-geo-alt me-1"></i>Kampala, Uganda
+            </p>
+
+            <!-- Small buttons to social profiles -->
+            <div class="d-flex justify-content-center gap-2 mb-4">
+              <a href="#" class="sm-btn"><i class="bi bi-linkedin"></i> LinkedIn</a>
+              <a href="#" class="sm-btn"><i class="bi bi-github"></i> GitHub</a>
+            </div>
+
+            <!-- Detail rows: label on the left, value on the right -->
+            <div class="text-start">
+              <div class="detail-row">
+                <span class="dr-label">Name</span>
+                <span class="dr-val">Mumbere Edger</span>
+              </div>
+              <div class="detail-row">
+                <span class="dr-label">University</span>
+                <span class="dr-val">Bugema University</span>
+              </div>
+              <div class="detail-row">
+                <span class="dr-label">Campus</span>
+                <span class="dr-val">Kampala Campus</span>
+              </div>
+              <div class="detail-row">
+                <span class="dr-label">Program</span>
+                <span class="dr-val">B.Sc. Information Technology</span>
+              </div>
+              <div class="detail-row">
+                <span class="dr-label">Status</span>
+                <!-- Teal color makes the status stand out as active -->
+                <span class="dr-val" style="color:var(--teal);">Current Student</span>
+              </div>
+              <div class="detail-row">
+                <span class="dr-label">Location</span>
+                <span class="dr-val">Kampala, Uganda</span>
+              </div>
+            </div><!-- end detail rows -->
+
+          </div><!-- end .profile-box -->
+        </div><!-- end left column -->
+
+
+        <!-- RIGHT COLUMN: Biography text (8 of 12 columns on large screens) -->
+        <div class="col-lg-8">
+          <h2 class="mb-1">My Story</h2>
+          <!-- Colored underline divider below the heading -->
+          <div class="divider mb-4"></div>
+
+          <!-- Introductory paragraph — larger font size for emphasis -->
+          <p style="font-size:1.05rem; color:var(--text);">
+            Hello! I'm <strong>Mumbere Edger</strong>, an Information Technology student at
+            <strong>Bugema University, Kampala Campus</strong>. My journey into technology
+            began with a deep curiosity about how digital systems shape the world around us.
+          </p>
+
+          <!-- Supporting paragraphs — muted color for secondary text -->
+          <p style="color:var(--muted);">
+            Growing up, I was always fascinated by computers and how software could solve
+            real-world problems. That fascination drove me to pursue a degree in Information
+            Technology, where I've been developing both my technical skills and my ability to
+            think critically about design and problem solving.
+          </p>
+          <p style="color:var(--muted);">
+            At Bugema University I've worked on academic and personal projects that have
+            strengthened my foundation in web development, database systems, and software
+            design. I believe in continuous learning and actively seek opportunities to grow
+            beyond the classroom — through online courses, community participation, and
+            building real projects.
+          </p>
+          <p style="color:var(--muted);">
+            My goal is to become a skilled software developer who contributes to meaningful
+            technological solutions — particularly those that address real challenges faced by
+            communities in East Africa and beyond.
+          </p>
+
+          <!-- CTA button at the bottom of the bio — links to the contact page -->
+          <a href="contact.html" class="btn-teal mt-3 d-inline-flex">
+            <i class="bi bi-envelope"></i> Get In Touch
+          </a>
+
+        </div><!-- end right column -->
+
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END BIOGRAPHY SECTION -->
+
+
+  <!-- ============================================================
+       SECTION 2: EDUCATION & ACADEMIC BACKGROUND
+       Left side: visual timeline of qualifications
+       Right side: summary table + key coursework tags
+  ============================================================ -->
+  <section class="bg-light-custom">
+    <div class="container">
+
+      <!-- Section heading -->
+      <div class="text-center mb-5">
+        <h2>Education &amp; Academic Background</h2>
+        <p class="sub-text mt-2">My academic journey and key coursework</p>
+        <div class="divider mx-auto mt-3"></div>
+      </div>
+
+      <div class="row g-5">
+
+        <!-- LEFT: Academic Timeline -->
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-4" style="color:var(--navy);">
+            <i class="bi bi-clock-history me-2" style="color:var(--teal);"></i>Academic Timeline
+          </h5>
+
+          <!-- tl-wrap = timeline wrapper. The vertical line is drawn using
+               a ::before pseudo-element in style.css (left border gradient) -->
+          <div class="tl-wrap">
+
+            <!-- TIMELINE ENTRY 1: Current degree -->
+            <div class="tl-item">
+              <!-- tl-dot = the circle on the timeline line. Default color = teal -->
+              <div class="tl-dot"></div>
+              <div class="tl-card">
+
+                <!-- Top row: degree name + status badge, side by side -->
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                  <div>
+                    <h5>B.Sc. Information Technology</h5>
+                    <!-- .inst = institution name styled in teal -->
+                    <span class="inst">Bugema University — Kampala Campus</span>
+                  </div>
+                  <!-- tl-badge current = green-tinted "Current" badge -->
+                  <span class="tl-badge current">Current</span>
+                </div>
+
+                <p>
+                  Studying software development, networking, database management,
+                  and digital systems with a focus on practical, real-world application.
+                </p>
+
+                <!-- Subject tags — small colored pill labels for each course -->
+                <div class="d-flex flex-wrap gap-1 mt-2">
+                  <span class="tag tag-teal">Web Development</span>
+                  <span class="tag tag-navy">Database Systems</span>
+                  <span class="tag tag-gold">Computer Networks</span>
+                  <span class="tag tag-purple">Software Engineering</span>
+                  <span class="tag tag-teal">Data Structures</span>
+                  <span class="tag tag-navy">Information Security</span>
+                </div>
+              </div>
+            </div><!-- end timeline entry 1 -->
+
+            <!-- TIMELINE ENTRY 2: UACE -->
+            <div class="tl-item">
+              <!-- .gold makes this dot gold instead of teal -->
+              <div class="tl-dot gold"></div>
+              <div class="tl-card">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                  <div>
+                    <h5>Uganda Advanced Certificate (UACE)</h5>
+                    <span class="inst">Secondary School — Uganda</span>
+                  </div>
+                  <!-- tl-badge done = gold-tinted "Done" badge -->
+                  <span class="tl-badge done">Completed</span>
+                </div>
+                <p>
+                  Completed Advanced Level with a focus on sciences and mathematics,
+                  building the foundation for university-level study in technology.
+                </p>
+              </div>
+            </div><!-- end timeline entry 2 -->
+
+            <!-- TIMELINE ENTRY 3: UCE -->
+            <div class="tl-item">
+              <div class="tl-dot gold"></div>
+              <div class="tl-card">
+                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+                  <div>
+                    <h5>Uganda Certificate of Education (UCE)</h5>
+                    <span class="inst">Secondary School — Uganda</span>
+                  </div>
+                  <span class="tl-badge done">Completed</span>
+                </div>
+                <p>
+                  Completed Ordinary Level education with strong results in
+                  mathematics, computer studies, and sciences.
+                </p>
+              </div>
+            </div><!-- end timeline entry 3 -->
+
+          </div><!-- end .tl-wrap -->
+        </div><!-- end timeline column -->
+
+
+        <!-- RIGHT: Education Table + Coursework Tags -->
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-4" style="color:var(--navy);">
+            <i class="bi bi-table me-2" style="color:var(--teal);"></i>Education Summary
+          </h5>
+
+          <!-- table-responsive makes the table scroll horizontally on small screens -->
+          <div class="table-responsive rounded-3 overflow-hidden border"
+               style="border-color:var(--border) !important;">
+            <!-- Bootstrap table: table-hover adds a highlight when you hover a row -->
+            <table class="table edu-table mb-0">
+              <thead>
+                <!-- Table header row — styled navy in style.css -->
+                <tr>
+                  <th>Institution</th>
+                  <th>Qualification</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Table data row 1 -->
+                <tr>
+                  <td><strong>Bugema University</strong></td>
+                  <td>B.Sc. Information Technology</td>
+                  <td>Kampala, UG</td>
+                  <td><span class="tl-badge current">Current</span></td>
+                </tr>
+                <!-- Table data row 2 -->
+                <tr>
+                  <td>Secondary School</td>
+                  <td>UACE</td>
+                  <td>Uganda</td>
+                  <td><span class="tl-badge done">Done</span></td>
+                </tr>
+                <!-- Table data row 3 -->
+                <tr>
+                  <td>Secondary School</td>
+                  <td>UCE</td>
+                  <td>Uganda</td>
+                  <td><span class="tl-badge done">Done</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- end table-responsive -->
+
+          <!-- Key Coursework callout box — soft teal background -->
+          <div class="mt-4 p-3 rounded-3"
+               style="background:rgba(15,157,142,0.07); border:1px solid rgba(15,157,142,0.2);">
+            <p class="fw-bold mb-2" style="color:var(--navy); font-size:0.92rem;">
+              <i class="bi bi-journal-check me-2" style="color:var(--teal);"></i>Key Relevant Coursework
+            </p>
+            <!-- Tag pills listing the specific modules studied -->
+            <div class="d-flex flex-wrap gap-2">
+              <span class="tag tag-teal">Web Development</span>
+              <span class="tag tag-navy">Database Systems</span>
+              <span class="tag tag-gold">Computer Networks</span>
+              <span class="tag tag-purple">Software Engineering</span>
+              <span class="tag tag-teal">Data Structures &amp; Algorithms</span>
+              <span class="tag tag-navy">Information Security</span>
+              <span class="tag tag-gold">IT Project Management</span>
+              <span class="tag tag-teal">Mathematics for IT</span>
+            </div>
+          </div>
+
+        </div><!-- end right column -->
+
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END EDUCATION SECTION -->
+
+
+  <!-- ============================================================
+       SECTION 3: SKILLS & COMPETENCIES
+       Left: Bootstrap-style progress bars for technical skills
+       Right: soft skill pills + tools grid
+  ============================================================ -->
+  <section>
+    <div class="container">
+
+      <div class="text-center mb-5">
+        <h2>Skills &amp; Competencies</h2>
+        <p class="sub-text mt-2">Technical expertise and professional abilities</p>
+        <div class="divider mx-auto mt-3"></div>
+      </div>
+
+      <div class="row g-5">
+
+        <!-- LEFT: Technical Skills with Progress Bars -->
+        <div class="col-lg-6">
+          <h5 class="fw-bold mb-4" style="color:var(--navy);">
+            <i class="bi bi-cpu me-2" style="color:var(--teal);"></i>Technical Skills
+          </h5>
+
+          <!-- Each skill has two parts:
+               1. .skill-label — flex row with skill name (left) and % (right)
+               2. .prog-track  — the grey track bar
+                    .prog-fill — the colored fill bar, width = skill level % -->
+
+          <div class="skill-label"><span>HTML5 &amp; CSS3</span><span>85%</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" style="width:85%;"></div>
+          </div>
+
+          <div class="skill-label"><span>Bootstrap 5</span><span>80%</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" style="width:80%;"></div>
+          </div>
+
+          <div class="skill-label"><span>JavaScript</span><span>65%</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" style="width:65%;"></div>
+          </div>
+
+          <div class="skill-label"><span>Python</span><span>60%</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" style="width:60%;"></div>
+          </div>
+
+          <div class="skill-label"><span>SQL &amp; MySQL</span><span>70%</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" style="width:70%;"></div>
+          </div>
+
+          <div class="skill-label"><span>Git &amp; GitHub</span><span>75%</span></div>
+          <div class="prog-track">
+            <div class="prog-fill" style="width:75%;"></div>
+          </div>
+
+        </div><!-- end technical skills column -->
+
+
+        <!-- RIGHT: Soft Skills + Tools -->
+        <div class="col-lg-6">
+
+          <!-- Soft Skills: pill-shaped badges with small icons -->
+          <h5 class="fw-bold mb-4" style="color:var(--navy);">
+            <i class="bi bi-people me-2" style="color:var(--gold2);"></i>Soft Skills
+          </h5>
+          <!-- d-flex flex-wrap = pills sit side by side and wrap to next line if needed -->
+          <div class="d-flex flex-wrap gap-2 mb-5">
+            <!-- Each .soft-pill is a styled badge defined in style.css -->
+            <span class="soft-pill"><i class="bi bi-lightbulb" style="color:var(--gold2);"></i> Problem Solving</span>
+            <span class="soft-pill"><i class="bi bi-chat-dots" style="color:var(--teal);"></i> Communication</span>
+            <span class="soft-pill"><i class="bi bi-people" style="color:var(--navy);"></i> Teamwork</span>
+            <span class="soft-pill"><i class="bi bi-clock" style="color:var(--teal);"></i> Time Management</span>
+            <span class="soft-pill"><i class="bi bi-arrow-repeat" style="color:var(--gold2);"></i> Adaptability</span>
+            <span class="soft-pill"><i class="bi bi-eye" style="color:var(--navy);"></i> Attention to Detail</span>
+            <span class="soft-pill"><i class="bi bi-graph-up" style="color:var(--teal);"></i> Critical Thinking</span>
+            <span class="soft-pill"><i class="bi bi-person-check" style="color:var(--gold2);"></i> Self-Motivated</span>
+          </div>
+
+          <!-- Tools Grid: 2-column grid of technology icons -->
+          <h5 class="fw-bold mb-4" style="color:var(--navy);">
+            <i class="bi bi-tools me-2" style="color:var(--teal);"></i>Tools &amp; Technologies
+          </h5>
+          <!-- row g-2 = Bootstrap grid with small gap between cells -->
+          <div class="row g-2">
+
+            <!-- Each tool box: icon + name, light background, border -->
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-3 border"
+                   style="background:var(--light);">
+                <!-- Official HTML5 orange color -->
+                <i class="bi bi-filetype-html fs-4" style="color:#e34f26;"></i>
+                <span class="fw-semibold" style="font-size:0.9rem;">HTML5</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-3 border"
+                   style="background:var(--light);">
+                <!-- Official CSS3 blue color -->
+                <i class="bi bi-filetype-css fs-4" style="color:#264de4;"></i>
+                <span class="fw-semibold" style="font-size:0.9rem;">CSS3</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-3 border"
+                   style="background:var(--light);">
+                <!-- Official Bootstrap purple color -->
+                <i class="bi bi-bootstrap fs-4" style="color:#7952b3;"></i>
+                <span class="fw-semibold" style="font-size:0.9rem;">Bootstrap</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-3 border"
+                   style="background:var(--light);">
+                <!-- Official Git red-orange color -->
+                <i class="bi bi-git fs-4" style="color:#f05032;"></i>
+                <span class="fw-semibold" style="font-size:0.9rem;">Git / GitHub</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-3 border"
+                   style="background:var(--light);">
+                <!-- Official Python blue color -->
+                <i class="bi bi-filetype-py fs-4" style="color:#3776ab;"></i>
+                <span class="fw-semibold" style="font-size:0.9rem;">Python</span>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="d-flex align-items-center gap-2 p-2 rounded-3 border"
+                   style="background:var(--light);">
+                <i class="bi bi-database fs-4" style="color:var(--teal);"></i>
+                <span class="fw-semibold" style="font-size:0.9rem;">MySQL</span>
+              </div>
+            </div>
+
+          </div><!-- end tools grid -->
+        </div><!-- end right column -->
+
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END SKILLS SECTION -->
+
+
+  <!-- ============================================================
+       SECTION 4: INTERESTS & HOBBIES
+       Four equal cards showing personal interests outside class.
+  ============================================================ -->
+  <section class="bg-light-custom">
+    <div class="container">
+
+      <div class="text-center mb-5">
+        <h2>Interests &amp; Hobbies</h2>
+        <p class="sub-text mt-2">What I enjoy beyond lectures and coursework</p>
+        <div class="divider mx-auto mt-3"></div>
+      </div>
+
+      <!-- Four cards in a row: col-sm-6 = 2 per row on tablets,
+           col-lg-3 = 4 per row on large screens -->
+      <div class="row g-4 justify-content-center">
+
+        <!-- INTEREST CARD 1 -->
+        <div class="col-sm-6 col-lg-3">
+          <!-- .int-card is styled in style.css — white card with hover effect -->
+          <div class="int-card">
+            <!-- Icon centered at the top of the card -->
+            <i class="bi bi-code-slash" style="color:var(--teal);"></i>
+            <h6>Coding &amp; Development</h6>
+            <p>Building web projects and exploring new languages and frameworks in my spare time.</p>
+          </div>
+        </div>
+
+        <!-- INTEREST CARD 2 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="int-card">
+            <i class="bi bi-book" style="color:var(--gold2);"></i>
+            <h6>Reading &amp; Learning</h6>
+            <p>Reading tech blogs, tutorials, and books about software engineering and digital innovation.</p>
+          </div>
+        </div>
+
+        <!-- INTEREST CARD 3 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="int-card">
+            <i class="bi bi-controller" style="color:var(--navy);"></i>
+            <h6>Technology &amp; Gaming</h6>
+            <p>Keeping up with the latest tech trends and exploring how gaming technology drives innovation.</p>
+          </div>
+        </div>
+
+        <!-- INTEREST CARD 4 -->
+        <div class="col-sm-6 col-lg-3">
+          <div class="int-card">
+            <i class="bi bi-people-fill" style="color:var(--teal);"></i>
+            <h6>Community &amp; Volunteering</h6>
+            <p>Participating in campus tech communities and helping peers understand technology concepts.</p>
+          </div>
+        </div>
+
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END INTERESTS SECTION -->
+
+
+  <!-- ============================================================
+       FOOTER — same structure on every page
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-3">
+
+        <!-- Bio column -->
+        <div class="col-md-4">
+          <h5 class="mb-3">
+            <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>Mumbere Edger
+          </h5>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.55);">
+            IT Student at Bugema University, Kampala Campus. Passionate about
+            technology and building meaningful digital experiences.
+          </p>
+        </div>
+
+        <!-- Quick links column -->
+        <div class="col-md-4">
+          <h6 class="mb-3">Quick Links</h6>
+          <a href="index.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>About Me</a>
+          <a href="gallery.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="contact.html" class="footer-link"><i class="bi bi-chevron-right me-1"></i>Contact</a>
+        </div>
+
+        <!-- Social media column -->
+        <div class="col-md-4">
+          <h6 class="mb-3">Connect With Me</h6>
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" title="GitHub"><i class="bi bi-github"></i></a>
+            <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="mailto:edger@bugema.ac.ug" class="social-link" title="Email">
+              <i class="bi bi-envelope-fill"></i>
+            </a>
+          </div>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">
+            <i class="bi bi-geo-alt me-1" style="color:var(--teal);"></i>Kampala, Uganda
+          </p>
+        </div>
+
+      </div><!-- end footer row -->
+
+      <hr />
+      <!-- &copy; = © copyright symbol -->
+      <p class="copy">&copy; 2026 Mumbere Edger. All rights reserved. | Bugema University — Kampala Campus</p>
+
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- Bootstrap JS bundle — required for the mobile hamburger menu to work -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

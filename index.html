@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- DOCTYPE tells the browser this is an HTML5 document -->
+
+<html lang="en">
+<!-- The <html> tag is the root of the page. lang="en" tells the browser the page is in English -->
+
+<head>
+  <!-- ============================================================
+       HEAD SECTION
+       Everything inside <head> is NOT visible on the page.
+       It contains settings, links to CSS files, and page info.
+  ============================================================ -->
+
+  <!-- UTF-8 charset allows all characters (letters, symbols, emojis) to display correctly -->
+  <meta charset="UTF-8" />
+
+  <!-- This makes the page responsive on mobile phones and tablets.
+       width=device-width  → use the screen width of the device
+       initial-scale=1.0   → don't zoom in or out by default -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- The title shown on the browser tab -->
+  <title>Mumbere Edger | Portfolio</title>
+
+  <!-- Bootstrap 5 CSS — a free framework that gives us ready-made
+       layout grids, buttons, cards, navbars, and more -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons — a library of over 1800 free icons
+       used throughout the page as <i class="bi bi-..."></i> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Google Fonts — loads the "Inter" font family from the internet
+       wght=300;400;600;700;800 means we load light, regular, semibold,
+       bold, and extrabold weights -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Our own custom CSS file — this is where all our personal
+       styles, colors, and layout rules are written -->
+  <link rel="stylesheet" href="css/style.css" />
+
+</head>
+
+<body>
+  <!-- ============================================================
+       BODY SECTION
+       Everything inside <body> is visible on the page.
+  ============================================================ -->
+
+
+  <!-- ============================================================
+       SECTION 1: NAVIGATION BAR
+       - Uses Bootstrap's navbar component
+       - sticky-top  → stays fixed at the top when you scroll
+       - navbar-expand-lg → collapses into a hamburger menu on small screens
+       - navbar-dark → makes text/icons white (for a dark background)
+  ============================================================ -->
+  <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+    <div class="container">
+      <!-- BRAND / LOGO — clicking this takes you back to the home page -->
+      <a class="navbar-brand fw-bold" href="index.html">
+        <!-- Bootstrap icon: a code slash symbol used as a logo -->
+        <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>
+        <!-- Brand name — first word white, second word gold -->
+        <span>Mumbere</span> <span style="color:var(--gold);">Edger</span>
+      </a>
+
+      <!-- HAMBURGER BUTTON — only visible on small screens (phones/tablets).
+           data-bs-toggle and data-bs-target tell Bootstrap which menu to open -->
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Three-line "burger" icon for the toggle button -->
+        <i class="bi bi-list text-white fs-4"></i>
+      </button>
+
+      <!-- NAV LINKS — hidden on small screens, shown on large screens (lg+)
+           id="mainNav" connects this to the hamburger button above -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto gap-lg-1">
+          <!-- ms-auto pushes the links to the right side of the navbar -->
+
+          <!-- Each nav-item is one link. "active" highlights the current page -->
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div><!-- end .container -->
+  </nav>
+  <!-- END NAVIGATION BAR -->
+
+
+  <!-- ============================================================
+       SECTION 2: HERO SECTION
+       The large banner at the top of the home page.
+       Contains: welcome badge, heading, tagline, two CTA buttons,
+       and a floating avatar circle on the right.
+  ============================================================ -->
+  <section class="hero-section">
+    <!-- .container limits the content width and centers it on large screens -->
+    <div class="container position-relative" style="z-index:2;">
+
+      <!-- Bootstrap grid: two columns side by side on large screens,
+           stacked on top of each other on small screens.
+           gy-5 adds vertical spacing between stacked rows on mobile -->
+      <div class="row align-items-center gy-5">
+
+        <!-- LEFT COLUMN: text content (takes 7 out of 12 columns on large screens) -->
+        <div class="col-lg-7">
+
+          <!-- Small badge above the heading — shows university info -->
+          <div class="hero-badge">
+            <i class="bi bi-mortarboard me-1"></i> IT Student · Bugema University
+          </div>
+
+          <!-- Main heading — .accent class makes "Mumbere Edger" appear in gold -->
+          <h1>
+            Hi, I'm <span class="accent">Mumbere Edger</span>
+          </h1>
+
+          <!-- Tagline / career objective paragraph -->
+          <p class="lead my-4">
+            A passionate Information Technology student at Bugema University —
+            Kampala Campus, dedicated to building digital solutions that matter
+            and growing into a software developer who makes a real impact.
+          </p>
+
+          <!-- CALL-TO-ACTION BUTTONS
+               btn-teal   → solid teal button (primary action)
+               btn-outline-gold → outlined gold button (secondary action) -->
+          <div class="d-flex flex-wrap gap-3">
+            <!-- d-flex makes the buttons sit side by side -->
+            <!-- flex-wrap allows them to wrap onto the next line on small screens -->
+            <a href="about.html" class="btn-teal">
+              <i class="bi bi-person-lines-fill"></i> Learn More About Me
+            </a>
+            <a href="contact.html" class="btn-outline-gold">
+              <i class="bi bi-envelope"></i> Get In Touch
+            </a>
+          </div>
+
+        </div><!-- end left column -->
+
+        <!-- RIGHT COLUMN: avatar circle (takes 5 out of 12 columns on large screens) -->
+        <div class="col-lg-5 text-center">
+          <!-- Animated floating circle — defined in style.css with @keyframes float -->
+          <div class="hero-avatar-box">
+            <!-- Large person icon — replace with an <img> tag once you have a photo -->
+            <i class="bi bi-person-circle"></i>
+          </div>
+        </div><!-- end right column -->
+
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END HERO SECTION -->
+
+
+  <!-- ============================================================
+       SECTION 3: HIGHLIGHTS / QUICK OVERVIEW
+       Three teaser cards: Core Skills, Current Program, Key Achievements.
+       Background: light off-white (bg-light-custom from style.css)
+  ============================================================ -->
+  <section class="bg-light-custom">
+    <div class="container">
+
+      <!-- Section heading block (used the same way on every page) -->
+      <div class="text-center mb-5">
+        <!-- mb-5 = margin-bottom of 3rem, pushes cards down from the heading -->
+        <h2>Quick Overview</h2>
+        <p class="sub-text mt-2">A snapshot of who I am and what I bring</p>
+        <!-- Decorative colored underline — styled in style.css as .divider -->
+        <div class="divider mx-auto mt-3"></div>
+      </div>
+
+      <!-- Three equal columns (cards) — Bootstrap grid: col-md-4 = 4/12 columns each -->
+      <div class="row g-4">
+        <!-- g-4 = gap between columns and rows -->
+
+        <!-- CARD 1: Core Skills -->
+        <div class="col-md-4">
+          <!-- ov-card = our custom overview card style defined in style.css -->
+          <div class="ov-card h-100">
+            <!-- h-100 makes all cards the same height in a row -->
+
+            <!-- Circular icon container — .teal gives it a teal background -->
+            <div class="ov-icon teal">
+              <i class="bi bi-code-square"></i>
+            </div>
+
+            <h5>Core Skills</h5>
+            <p>Proficient in web technologies and programming fundamentals that power modern applications.</p>
+
+            <!-- Skill tags — small colored pill-shaped labels -->
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+              <span class="tag tag-teal">HTML5</span>
+              <span class="tag tag-teal">CSS3</span>
+              <span class="tag tag-navy">Bootstrap</span>
+              <span class="tag tag-gold">JavaScript</span>
+              <span class="tag tag-purple">Python</span>
+            </div>
+          </div>
+        </div><!-- end card 1 -->
+
+        <!-- CARD 2: Current Program -->
+        <div class="col-md-4">
+          <div class="ov-card h-100">
+            <!-- .gold gives the icon a gold-tinted background -->
+            <div class="ov-icon gold">
+              <i class="bi bi-mortarboard-fill"></i>
+            </div>
+
+            <h5>Current Program</h5>
+            <p>Pursuing my degree and building a strong academic foundation in technology.</p>
+
+            <!-- List of university details — list-unstyled removes bullet points -->
+            <ul class="list-unstyled text-start mt-2" style="font-size:0.9rem; color:var(--text);">
+              <li class="mb-2">
+                <i class="bi bi-building me-2" style="color:var(--teal);"></i>
+                <strong>Bugema University</strong>
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-geo-alt me-2" style="color:var(--teal);"></i>Kampala Campus
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-book me-2" style="color:var(--teal);"></i>B.Sc. Information Technology
+              </li>
+              <li>
+                <!-- Tiny dot used as a status indicator -->
+                <i class="bi bi-circle-fill me-2" style="color:var(--gold); font-size:0.5rem; vertical-align:middle;"></i>
+                Current Student
+              </li>
+            </ul>
+          </div>
+        </div><!-- end card 2 -->
+
+        <!-- CARD 3: Key Achievements -->
+        <div class="col-md-4">
+          <div class="ov-card h-100">
+            <!-- .navy gives the icon a dark navy background -->
+            <div class="ov-icon navy">
+              <i class="bi bi-trophy-fill"></i>
+            </div>
+
+            <h5>Key Achievements</h5>
+            <p>Highlights of my academic journey and hands-on project work so far.</p>
+
+            <!-- Achievement list with teal tick icons -->
+            <ul class="list-unstyled text-start mt-2" style="font-size:0.88rem; color:var(--text);">
+              <li class="mb-2">
+                <i class="bi bi-check-circle-fill me-2" style="color:var(--teal);"></i>
+                Built responsive web applications
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check-circle-fill me-2" style="color:var(--teal);"></i>
+                Completed web development coursework
+              </li>
+              <li class="mb-2">
+                <i class="bi bi-check-circle-fill me-2" style="color:var(--teal);"></i>
+                Active campus tech community member
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill me-2" style="color:var(--teal);"></i>
+                Launched personal portfolio project
+              </li>
+            </ul>
+          </div>
+        </div><!-- end card 3 -->
+
+      </div><!-- end .row -->
+    </div><!-- end .container -->
+  </section>
+  <!-- END HIGHLIGHTS SECTION -->
+
+
+  <!-- ============================================================
+       SECTION 4: FOOTER
+       Appears at the bottom of every page.
+       Contains: short bio, quick links, social media icons, copyright.
+  ============================================================ -->
+  <footer>
+    <div class="container">
+
+      <!-- Three footer columns: Bio | Quick Links | Social Media -->
+      <div class="row g-4 pb-3">
+        <!-- pb-3 = padding-bottom so the content doesn't sit against the <hr> -->
+
+        <!-- COLUMN 1: Short bio -->
+        <div class="col-md-4">
+          <h5 class="mb-3">
+            <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>Mumbere Edger
+          </h5>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.55);">
+            IT Student at Bugema University, Kampala Campus. Passionate about
+            technology and building meaningful digital experiences.
+          </p>
+        </div>
+
+        <!-- COLUMN 2: Quick navigation links -->
+        <div class="col-md-4">
+          <h6 class="mb-3">Quick Links</h6>
+          <!-- Each footer-link is styled in style.css to be white and turn gold on hover -->
+          <a href="index.html" class="footer-link">
+            <i class="bi bi-chevron-right me-1"></i>Home
+          </a>
+          <a href="about.html" class="footer-link">
+            <i class="bi bi-chevron-right me-1"></i>About Me
+          </a>
+          <a href="gallery.html" class="footer-link">
+            <i class="bi bi-chevron-right me-1"></i>Gallery
+          </a>
+          <a href="contact.html" class="footer-link">
+            <i class="bi bi-chevron-right me-1"></i>Contact
+          </a>
+        </div>
+
+        <!-- COLUMN 3: Social media icons + location -->
+        <div class="col-md-4">
+          <h6 class="mb-3">Connect With Me</h6>
+          <!-- Social icons — each is a link that opens in a new tab (add target="_blank" when real links are ready) -->
+          <div class="d-flex gap-3 mb-3">
+            <a href="#" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" title="GitHub"><i class="bi bi-github"></i></a>
+            <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <!-- mailto: opens the user's email app with your address pre-filled -->
+            <a href="mailto:edger@bugema.ac.ug" class="social-link" title="Email">
+              <i class="bi bi-envelope-fill"></i>
+            </a>
+          </div>
+          <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">
+            <i class="bi bi-geo-alt me-1" style="color:var(--teal);"></i>Kampala, Uganda
+          </p>
+        </div>
+
+      </div><!-- end footer columns row -->
+
+      <!-- Horizontal dividing line above copyright -->
+      <hr />
+
+      <!-- Copyright notice — &copy; produces the © symbol -->
+      <p class="copy">&copy; 2026 Mumbere Edger. All rights reserved. | Bugema University — Kampala Campus</p>
+
+    </div><!-- end .container -->
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- ============================================================
+       BOOTSTRAP JAVASCRIPT BUNDLE
+       Must be placed at the END of <body> (not in <head>).
+       This single file includes:
+       - Bootstrap JS (needed for the navbar hamburger toggle)
+       - Popper.js    (needed for dropdowns and tooltips)
+       Without this, the mobile menu button will not work.
+  ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

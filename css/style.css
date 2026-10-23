@@ -1,0 +1,999 @@
+/* ================================================================
+   MUMBERE EDGER — Portfolio Website
+   Custom Stylesheet (style.css)
+
+   HOW THIS FILE IS ORGANISED:
+   1.  CSS Variables (color palette)
+   2.  Base / Global reset
+   3.  Divider component
+   4.  Navbar
+   5.  Hero section (index.html)
+   6.  Buttons (btn-teal, btn-outline-gold)
+   7.  Page Header banner (about, gallery, contact)
+   8.  Section common rules
+   9.  Cards (overview cards, hover effect)
+   10. Badge / Tag pills
+   11. Footer
+   12. About page: profile box, timeline, table, progress bars,
+       soft skill pills, interests cards
+   13. Gallery page: video wrap, gallery cards
+   14. Contact page: info cards, form, map
+   15. Responsive breakpoints
+================================================================ */
+
+
+/* ================================================================
+   1. CSS VARIABLES — COLOR PALETTE
+   CSS variables (custom properties) let us define our colors
+   once and reuse them everywhere using var(--name).
+   To change the site's whole color scheme, just edit these values.
+================================================================ */
+:root {
+  /* Deep navy — used for navbar, hero background, footer, headings */
+  --navy:   #0b1e3d;
+
+  /* Teal — primary accent color: buttons, icons, borders, active links */
+  --teal:   #0f9d8e;
+
+  /* Darker teal — used for hover states on teal elements */
+  --teal2:  #0c7a6d;
+
+  /* Warm gold — secondary accent: highlights, outline buttons, badges */
+  --gold:   #f4a923;
+
+  /* Darker gold — used for hover states and text on gold backgrounds */
+  --gold2:  #d4911a;
+
+  /* Off-white — used as background for alternating sections */
+  --light:  #f0f4f8;
+
+  /* Pure white — default card and page background */
+  --white:  #ffffff;
+
+  /* Dark text color — used for headings and paragraph text */
+  --text:   #1e293b;
+
+  /* Muted grey — used for secondary/supporting paragraph text */
+  --muted:  #64748b;
+
+  /* Light border color — used for card borders, table lines, dividers */
+  --border: #dde3ec;
+}
+
+
+/* ================================================================
+   2. BASE / GLOBAL RESET
+   These rules apply to every element on the page.
+================================================================ */
+
+/* box-sizing: border-box means padding and border are included
+   in an element's total width and height — prevents layout overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  /* Inter is loaded from Google Fonts; Segoe UI is the Windows fallback */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.75;  /* comfortable reading line spacing */
+  margin: 0;          /* removes default browser body margin */
+}
+
+
+/* ================================================================
+   3. DIVIDER
+   A short colored underline used below section headings.
+   The gradient goes from teal (left) to gold (right).
+================================================================ */
+.divider {
+  width: 56px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  border-radius: 3px;
+  margin-bottom: 1rem;
+}
+
+
+/* ================================================================
+   4. NAVBAR
+   The sticky navigation bar at the top of every page.
+   border-bottom adds the teal accent line under the navbar.
+================================================================ */
+.navbar {
+  background-color: var(--navy) !important;
+  /* !important overrides Bootstrap's default bg-dark class */
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid var(--teal); /* teal underline accent */
+}
+
+.navbar-brand {
+  font-size: 1.35rem;
+  letter-spacing: -0.3px;
+  color: var(--white) !important;
+}
+
+/* The span inside .navbar-brand that shows the gold "Edger" part */
+.navbar-brand span {
+  color: var(--teal);
+}
+
+/* Individual nav links */
+.nav-link {
+  color: rgba(255,255,255,0.82) !important; /* slightly transparent white */
+  font-weight: 500;
+  padding: 0.45rem 0.9rem !important;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s; /* smooth color change on hover */
+}
+
+/* Hover and active states: gold text + faint gold background */
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold) !important;
+  background: rgba(244,169,35,0.12);
+}
+
+/* Make the hamburger button border match our teal color */
+.navbar-toggler {
+  border-color: var(--teal);
+}
+
+/* The three-line hamburger icon needs to be white on a dark navbar */
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+
+/* ================================================================
+   5. HERO SECTION (index.html only)
+   The full-height banner on the home page.
+   The ::after pseudo-element adds a glowing circle decoration
+   in the bottom-right corner.
+================================================================ */
+.hero-section {
+  min-height: 92vh; /* 92% of the viewport height */
+  background: linear-gradient(135deg, var(--navy) 0%, #132d52 55%, #1a4068 100%);
+  position: relative;  /* needed so z-index works on child elements */
+  overflow: hidden;    /* hides the decorative circle if it goes outside */
+  display: flex;
+  align-items: center; /* vertically centers the content */
+}
+
+/* Decorative radial glow circle in the bottom-right of the hero */
+.hero-section::after {
+  content: '';   /* required for pseudo-elements to appear */
+  position: absolute;
+  bottom: -120px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(15,157,142,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none; /* can't be clicked or hovered */
+}
+
+/* The small pill badge above the hero heading */
+.hero-badge {
+  background: var(--teal);
+  color: var(--white);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  display: inline-block;
+  margin-bottom: 1.1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Hero main heading size — clamp() scales between a min and max based on viewport */
+.hero-section h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+/* The "accent" span inside the h1 — makes the name gold */
+.hero-section h1 .accent {
+  color: var(--gold);
+}
+
+/* Lead paragraph below the heading */
+.hero-section .lead {
+  color: rgba(255,255,255,0.78);
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+/* The circular avatar box on the right side of the hero */
+.hero-avatar-box {
+  width: 260px;
+  height: 260px;
+  background: rgba(15,157,142,0.15);  /* semi-transparent teal fill */
+  border: 3px solid var(--teal);       /* teal ring border */
+  border-radius: 50%;                  /* makes it a circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  animation: float 4s ease-in-out infinite; /* applies the floating animation */
+}
+
+/* Icon inside the avatar circle */
+.hero-avatar-box i {
+  font-size: 8rem;
+  color: var(--teal);
+}
+
+/* Floating animation — moves the avatar up and down smoothly */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }    /* start and end: original position */
+  50%       { transform: translateY(-16px); } /* middle: moved 16px upward */
+}
+
+
+/* ================================================================
+   6. BUTTONS
+   Two custom button styles used as call-to-action links.
+================================================================ */
+
+/* Primary button — solid teal background */
+.btn-teal {
+  background: var(--teal);
+  color: var(--white);
+  font-weight: 700;
+  border: none;
+  padding: 0.7rem 1.8rem;
+  border-radius: 8px;
+  /* transition animates the hover effects smoothly */
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;   /* removes underline from <a> tags */
+  display: inline-flex;    /* lets the icon and text sit side by side */
+  align-items: center;
+  gap: 0.5rem;             /* space between icon and text */
+}
+
+/* Hover: darker teal + slight upward lift + teal glow shadow */
+.btn-teal:hover {
+  background: var(--teal2);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(15,157,142,0.35);
+}
+
+/* Secondary button — transparent with gold border */
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold);
+  font-weight: 700;
+  border: 2px solid var(--gold);
+  padding: 0.65rem 1.8rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Hover: fills with gold, text turns navy */
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(244,169,35,0.3);
+}
+
+
+/* ================================================================
+   7. PAGE HEADER BANNER (about.html, gallery.html, contact.html)
+   The dark banner just below the navbar on inner pages.
+   ::after adds a semi-transparent dark overlay so text stays readable.
+================================================================ */
+.page-header {
+  min-height: 280px;
+  background: linear-gradient(135deg, var(--navy) 0%, #132d52 60%, #1a4068 100%);
+  border-bottom: 3px solid var(--teal);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Dark overlay on top of the gradient */
+.page-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;              /* shorthand for top:0; right:0; bottom:0; left:0 */
+  background: rgba(0,0,0,0.35);
+}
+
+/* ph-content sits above the ::after overlay using z-index */
+.page-header .ph-content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-header h1 {
+  color: var(--white);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.page-header .lead {
+  color: rgba(255,255,255,0.75);
+}
+
+/* Breadcrumb: "Home > Page" navigation trail */
+.breadcrumb {
+  background: transparent;
+  padding: 0;
+  justify-content: center;
+}
+
+.breadcrumb-item a {
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.breadcrumb-item.active {
+  color: rgba(255,255,255,0.6);
+}
+
+/* The " / " separator between breadcrumb items */
+.breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255,255,255,0.4);
+}
+
+
+/* ================================================================
+   8. SECTION COMMON RULES
+   These rules apply to all <section> elements.
+================================================================ */
+
+/* Consistent vertical padding on every section */
+section {
+  padding: 72px 0;
+}
+
+/* Alternating section background — off-white for visual separation */
+section.bg-light-custom {
+  background: var(--light);
+}
+
+/* Section heading: scales responsively with clamp() */
+section h2 {
+  font-weight: 800;
+  color: var(--navy);
+  font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+  letter-spacing: -0.4px;
+}
+
+/* Sub-heading text under section headings */
+section p.sub-text {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+
+/* ================================================================
+   9. CARDS — SHARED RULES
+   All Bootstrap .card elements get rounded corners, a light border,
+   and a hover lift animation.
+================================================================ */
+.card {
+  border-radius: 14px !important;
+  border: 1px solid var(--border) !important;
+  /* transition makes the hover effect animate smoothly */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);    /* lifts the card 6px upward */
+  box-shadow: 0 18px 40px rgba(11,30,61,0.10) !important; /* soft navy shadow */
+}
+
+/* Overview cards (Quick Overview section on index.html) */
+.ov-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.ov-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 44px rgba(15,157,142,0.1);
+}
+
+/* Circular icon container inside overview cards */
+.ov-card .ov-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.7rem;
+}
+
+/* Three color variants for the icon circles */
+.ov-icon.teal  { background: rgba(15,157,142,0.12); color: var(--teal); }
+.ov-icon.gold  { background: rgba(244,169,35,0.12);  color: var(--gold2); }
+.ov-icon.navy  { background: rgba(11,30,61,0.10);    color: var(--navy); }
+
+.ov-card h5 {
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.ov-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+
+/* ================================================================
+   10. BADGE / TAG PILLS
+   Small pill-shaped labels used to categorize content
+   (skills, photo categories, course subjects, etc.)
+================================================================ */
+.tag {
+  display: inline-block;
+  padding: 0.28rem 0.8rem;
+  border-radius: 50px; /* fully rounded ends */
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Color variants — each is a tinted background + matching text color */
+.tag-teal   { background: rgba(15,157,142,0.12);  color: var(--teal2); }
+.tag-gold   { background: rgba(244,169,35,0.15);   color: var(--gold2); }
+.tag-navy   { background: rgba(11,30,61,0.08);     color: var(--navy); }
+.tag-red    { background: rgba(220,53,69,0.10);    color: #b91c1c; }
+.tag-purple { background: rgba(124,58,237,0.10);   color: #7c3aed; }
+
+
+/* ================================================================
+   11. FOOTER
+   Dark navy footer appearing at the bottom of every page.
+   border-top adds the teal accent line above the footer.
+================================================================ */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.75);
+  padding: 56px 0 28px;
+  font-size: 0.9rem;
+  border-top: 3px solid var(--teal);
+}
+
+footer h5, footer h6 {
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* Footer navigation links — muted white, turn gold on hover */
+footer .footer-link {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  display: block;     /* each link gets its own full-width line */
+  padding: 0.2rem 0;
+  transition: color 0.2s;
+}
+
+footer .footer-link:hover {
+  color: var(--gold);
+}
+
+/* Social media icon links */
+footer .social-link {
+  color: rgba(255,255,255,0.6);
+  font-size: 1.4rem;
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+/* Hover: turn teal and lift slightly */
+footer .social-link:hover {
+  color: var(--teal);
+  transform: translateY(-3px);
+}
+
+/* Thin horizontal rule above copyright */
+footer hr {
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* Copyright line */
+footer .copy {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+
+/* ================================================================
+   12. ABOUT PAGE STYLES
+================================================================ */
+
+/* ── Profile Box (dark navy card on the left of the biography) ── */
+.profile-box {
+  background: linear-gradient(160deg, var(--navy) 0%, #132d52 100%);
+  border-radius: 18px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  color: var(--white);
+}
+
+/* Circular avatar ring inside the profile box */
+.profile-box .avatar-ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--teal);
+  background: rgba(15,157,142,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 4rem;
+  color: var(--teal);
+}
+
+.profile-box h3  { color: var(--white); font-weight: 800; margin-bottom: 0.2rem; }
+.profile-box .role { color: var(--gold); font-size: 0.9rem; font-weight: 600; }
+.profile-box .loc  { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+
+/* Small outline buttons inside the profile box (LinkedIn, GitHub) */
+.profile-box .sm-btn {
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.8);
+  background: transparent;
+  padding: 0.35rem 1rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.profile-box .sm-btn:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(15,157,142,0.1);
+}
+
+/* ── Detail Rows (label: value pairs inside the profile box) ── */
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1); /* subtle white divider */
+  font-size: 0.92rem;
+}
+
+.detail-row:last-child { border-bottom: none; } /* no line after the last row */
+.detail-row .dr-label  { color: rgba(255,255,255,0.5); min-width: 90px; font-size: 0.82rem; }
+.detail-row .dr-val    { color: var(--white); font-weight: 600; }
+
+/* ── Timeline (Education section) ── */
+/* The wrapper holds all timeline entries and draws the vertical line */
+.tl-wrap {
+  position: relative;
+  padding-left: 2.8rem; /* space for the vertical line and dots */
+}
+
+/* Vertical connecting line drawn using ::before pseudo-element */
+.tl-wrap::before {
+  content: '';
+  position: absolute;
+  left: 20px;  /* horizontally centered under the dots */
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--teal), var(--gold));
+  border-radius: 2px;
+}
+
+/* Container for each single timeline entry */
+.tl-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* The circle/dot on the timeline line */
+.tl-dot {
+  position: absolute;
+  left: -2.45rem; /* positioned to sit on the vertical line */
+  top: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid var(--teal); /* default: teal ring */
+  background: var(--white);       /* white fill so the line behind is hidden */
+  z-index: 1;
+}
+
+/* Gold variant for completed qualifications */
+.tl-dot.gold { border-color: var(--gold); }
+
+/* Card holding each qualification's info */
+.tl-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.4rem 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.tl-card:hover { box-shadow: 0 8px 28px rgba(11,30,61,0.08); }
+
+.tl-card h5   { color: var(--navy); font-weight: 700; margin-bottom: 0.2rem; }
+.tl-card .inst { color: var(--teal); font-size: 0.88rem; font-weight: 600; }
+.tl-card p    { color: var(--muted); font-size: 0.88rem; margin: 0.5rem 0 0; }
+
+/* Status badges inside timeline cards */
+.tl-badge {
+  display: inline-block;
+  padding: 0.22rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.tl-badge.current  { background: rgba(15,157,142,0.12); color: var(--teal2); }
+.tl-badge.done     { background: rgba(244,169,35,0.15);  color: var(--gold2); }
+
+/* ── Education Summary Table ── */
+/* Header row gets a dark navy background with white text */
+.edu-table thead th {
+  background: var(--navy);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.88rem;
+  border: none;
+}
+
+.edu-table tbody td {
+  font-size: 0.9rem;
+  vertical-align: middle;
+  border-color: var(--border);
+}
+
+/* ── Technical Skills Progress Bars ── */
+/* Row above the bar: skill name (left) and percentage (right) */
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+/* Percentage shown in teal */
+.skill-label span:last-child { color: var(--teal); }
+
+/* The grey track that the colored bar sits inside */
+.prog-track {
+  background: #dde3ec;
+  border-radius: 50px;
+  height: 9px;
+  margin-bottom: 1.1rem;
+  overflow: hidden; /* stops the fill from overflowing the rounded ends */
+}
+
+/* The colored fill bar — width is set inline per skill (e.g. style="width:85%;") */
+.prog-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--teal), var(--gold)); /* teal to gold gradient */
+}
+
+/* ── Soft Skill Pills ── */
+.soft-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  background: var(--white);
+}
+
+/* ── Interest Cards ── */
+.int-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+/* Hover: lift + teal shadow + teal border */
+.int-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 34px rgba(15,157,142,0.1);
+  border-color: var(--teal);
+}
+
+.int-card i  { font-size: 2.4rem; margin-bottom: 0.75rem; display: block; }
+.int-card h6 { font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+.int-card p  { font-size: 0.84rem; color: var(--muted); margin: 0; }
+
+
+/* ================================================================
+   13. GALLERY PAGE STYLES
+================================================================ */
+
+/* ── Video Wrapper ── */
+/* Teal border around the embedded video */
+.video-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--teal);
+  box-shadow: 0 16px 48px rgba(11,30,61,0.14);
+}
+
+/* Dark caption bar below the video */
+.video-caption {
+  background: var(--navy);
+  color: rgba(255,255,255,0.85);
+  padding: 1rem 1.4rem;
+  font-size: 0.9rem;
+}
+
+.video-caption strong { color: var(--gold); }
+
+/* ── Gallery Cards ── */
+.g-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.g-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 44px rgba(11,30,61,0.12);
+}
+
+/* Thumbnail area at the top of each gallery card */
+.g-thumb {
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.8rem; /* large icon size */
+  position: relative;
+}
+
+/* Six color variants for thumbnail backgrounds
+   Each uses a two-color diagonal gradient at very low opacity */
+.g-thumb.c1 { background: linear-gradient(135deg, #0b1e3d18, #0f9d8e22); color: var(--teal); }
+.g-thumb.c2 { background: linear-gradient(135deg, #f4a92318, #f4a92333); color: var(--gold2); }
+.g-thumb.c3 { background: linear-gradient(135deg, #7c3aed18, #7c3aed22); color: #7c3aed; }
+.g-thumb.c4 { background: linear-gradient(135deg, #0b1e3d18, #132d5222); color: var(--navy); }
+.g-thumb.c5 { background: linear-gradient(135deg, #0f9d8e18, #0f9d8e22); color: var(--teal2); }
+.g-thumb.c6 { background: linear-gradient(135deg, #dc354518, #dc354522); color: #dc3545; }
+
+/* Card body below the thumbnail */
+.g-body { padding: 1rem 1.1rem 1.2rem; }
+.g-body h6 { font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; font-size: 0.95rem; }
+.g-body p  { font-size: 0.83rem; color: var(--muted); margin-bottom: 0.6rem; }
+
+
+/* ================================================================
+   14. CONTACT PAGE STYLES
+================================================================ */
+
+/* ── Contact Information Cards ── */
+.ci-card {
+  display: flex;
+  align-items: flex-start; /* icon stays at top even if text is tall */
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+/* Hover: border turns teal, slides 4px to the right */
+.ci-card:hover {
+  border-color: var(--teal);
+  box-shadow: 0 6px 20px rgba(15,157,142,0.1);
+  transform: translateX(4px);
+}
+
+/* Rounded square icon container at the left of each info card */
+.ci-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0; /* icon never shrinks even when space is tight */
+}
+
+/* Icon background color variants */
+.ci-icon.teal   { background: rgba(15,157,142,0.12); color: var(--teal); }
+.ci-icon.gold   { background: rgba(244,169,35,0.12);  color: var(--gold2); }
+.ci-icon.navy   { background: rgba(11,30,61,0.10);    color: var(--navy); }
+.ci-icon.red    { background: rgba(220,53,69,0.10);   color: #dc3545; }
+.ci-icon.purple { background: rgba(124,58,237,0.10);  color: #7c3aed; }
+
+/* Text inside info cards */
+.ci-card h6  { font-weight: 700; color: var(--navy); margin-bottom: 0.15rem; font-size: 0.88rem; }
+.ci-card a, .ci-card p {
+  color: var(--muted);
+  font-size: 0.87rem;
+  margin: 0;
+  text-decoration: none;
+}
+.ci-card a:hover { color: var(--teal); }
+
+/* ── Contact Form Card ── */
+.cf-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 2.4rem 2rem;
+  box-shadow: 0 12px 40px rgba(11,30,61,0.07);
+}
+
+.cf-card h4  { color: var(--navy); font-weight: 800; margin-bottom: 0.3rem; }
+.cf-card .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+/* Form field labels */
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+
+/* Input and textarea base styles */
+.form-control, .form-select {
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 0.65rem 0.9rem;
+  color: var(--text);
+  background: var(--light); /* off-white background when unfocused */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* When the user clicks into a field — teal border + soft teal glow ring */
+.form-control:focus, .form-select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(15,157,142,0.15);
+  outline: none;       /* removes the default browser blue outline */
+  background: var(--white);
+}
+
+/* Submit button — full-width teal gradient */
+.btn-submit {
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  color: var(--white);
+  font-weight: 700;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;      /* stretches to fill the column */
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+/* Hover: slight fade + upward lift */
+.btn-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ── Embedded Map ── */
+.map-wrap {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid var(--teal);
+  box-shadow: 0 12px 36px rgba(11,30,61,0.1);
+}
+
+/* Footer bar beneath the map iframe */
+.map-footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.88rem;
+}
+
+.map-footer i { color: var(--teal); font-size: 1.2rem; }
+
+/* "Open in Maps" link inside the map footer */
+.map-footer a {
+  margin-left: auto; /* pushes this button to the far right */
+  background: var(--teal);
+  color: var(--white);
+  padding: 0.35rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.map-footer a:hover {
+  background: var(--teal2);
+  color: var(--white);
+}
+
+
+/* ================================================================
+   15. RESPONSIVE BREAKPOINTS
+   These rules adjust the layout at smaller screen sizes.
+   @media (max-width: Xpx) means: apply these rules ONLY when the
+   screen width is Xpx or less.
+================================================================ */
+
+/* Tablets and smaller (below 992px) */
+@media (max-width: 991px) {
+  /* Hero doesn't need to be full-screen height on tablets */
+  .hero-section {
+    min-height: auto;
+    padding: 70px 0;
+  }
+
+  /* Slightly shorter page headers on tablets */
+  .page-header {
+    min-height: 230px;
+  }
+
+  /* Reduce section padding on smaller screens */
+  section {
+    padding: 52px 0;
+  }
+}
+
+/* Mobile phones (below 576px) */
+@media (max-width: 576px) {
+  /* Smaller heading on phones so it doesn't overflow */
+  .hero-section h1 {
+    font-size: 1.85rem;
+  }
+
+  /* Smaller avatar circle on phones */
+  .hero-avatar-box {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-avatar-box i {
+    font-size: 5.5rem;
+  }
+}
