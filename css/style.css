@@ -1,92 +1,29 @@
-/* ================================================================
-   MUMBERE EDGER — Portfolio Website
-   Custom Stylesheet (style.css)
 
-   HOW THIS FILE IS ORGANISED:
-   1.  CSS Variables (color palette)
-   2.  Base / Global reset
-   3.  Divider component
-   4.  Navbar
-   5.  Hero section (index.html)
-   6.  Buttons (btn-teal, btn-outline-gold)
-   7.  Page Header banner (about, gallery, contact)
-   8.  Section common rules
-   9.  Cards (overview cards, hover effect)
-   10. Badge / Tag pills
-   11. Footer
-   12. About page: profile box, timeline, table, progress bars,
-       soft skill pills, interests cards
-   13. Gallery page: video wrap, gallery cards
-   14. Contact page: info cards, form, map
-   15. Responsive breakpoints
-================================================================ */
-
-
-/* ================================================================
-   1. CSS VARIABLES — COLOR PALETTE
-   CSS variables (custom properties) let us define our colors
-   once and reuse them everywhere using var(--name).
-   To change the site's whole color scheme, just edit these values.
-================================================================ */
 :root {
-  /* Deep navy — used for navbar, hero background, footer, headings */
   --navy:   #0b1e3d;
-
-  /* Teal — primary accent color: buttons, icons, borders, active links */
   --teal:   #0f9d8e;
-
-  /* Darker teal — used for hover states on teal elements */
   --teal2:  #0c7a6d;
-
-  /* Warm gold — secondary accent: highlights, outline buttons, badges */
   --gold:   #f4a923;
-
-  /* Darker gold — used for hover states and text on gold backgrounds */
   --gold2:  #d4911a;
-
-  /* Off-white — used as background for alternating sections */
   --light:  #f0f4f8;
-
-  /* Pure white — default card and page background */
   --white:  #ffffff;
-
-  /* Dark text color — used for headings and paragraph text */
   --text:   #1e293b;
-
-  /* Muted grey — used for secondary/supporting paragraph text */
   --muted:  #64748b;
-
-  /* Light border color — used for card borders, table lines, dividers */
   --border: #dde3ec;
 }
 
-
-/* ================================================================
-   2. BASE / GLOBAL RESET
-   These rules apply to every element on the page.
-================================================================ */
-
-/* box-sizing: border-box means padding and border are included
-   in an element's total width and height — prevents layout overflow */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  /* Inter is loaded from Google Fonts; Segoe UI is the Windows fallback */
   font-family: 'Inter', 'Segoe UI', sans-serif;
   color: var(--text);
   background: var(--white);
-  line-height: 1.75;  /* comfortable reading line spacing */
-  margin: 0;          /* removes default browser body margin */
+  line-height: 1.75; 
+  margin: 0;         
 }
 
-
-/* ================================================================
-   3. DIVIDER
-   A short colored underline used below section headings.
-   The gradient goes from teal (left) to gold (right).
-================================================================ */
 .divider {
   width: 56px;
   height: 4px;
@@ -95,15 +32,8 @@ body {
   margin-bottom: 1rem;
 }
 
-
-/* ================================================================
-   4. NAVBAR
-   The sticky navigation bar at the top of every page.
-   border-bottom adds the teal accent line under the navbar.
-================================================================ */
 .navbar {
-  background-color: var(--navy) !important;
-  /* !important overrides Bootstrap's default bg-dark class */
+  background-color: var(--navy);
   padding-top: 0.85rem;
   padding-bottom: 0.85rem;
   border-bottom: 2px solid var(--teal); /* teal underline accent */
@@ -112,59 +42,46 @@ body {
 .navbar-brand {
   font-size: 1.35rem;
   letter-spacing: -0.3px;
-  color: var(--white) !important;
+  color: var(--white);
 }
 
-/* The span inside .navbar-brand that shows the gold "Edger" part */
 .navbar-brand span {
   color: var(--teal);
 }
 
-/* Individual nav links */
 .nav-link {
-  color: rgba(255,255,255,0.82) !important; /* slightly transparent white */
+  color: rgba(255,255,255,0.82);
   font-weight: 500;
-  padding: 0.45rem 0.9rem !important;
+  padding: 0.45rem 0.9rem;
   border-radius: 6px;
-  transition: background 0.2s, color 0.2s; /* smooth color change on hover */
+  transition: background 0.2s, color 0.2s;
 }
 
-/* Hover and active states: gold text + faint gold background */
 .nav-link:hover,
 .nav-link.active {
   color: var(--gold) !important;
   background: rgba(244,169,35,0.12);
 }
 
-/* Make the hamburger button border match our teal color */
 .navbar-toggler {
   border-color: var(--teal);
 }
 
-/* The three-line hamburger icon needs to be white on a dark navbar */
 .navbar-toggler-icon {
   filter: invert(1);
 }
 
-
-/* ================================================================
-   5. HERO SECTION (index.html only)
-   The full-height banner on the home page.
-   The ::after pseudo-element adds a glowing circle decoration
-   in the bottom-right corner.
-================================================================ */
 .hero-section {
-  min-height: 92vh; /* 92% of the viewport height */
+  min-height: 92vh; 
   background: linear-gradient(135deg, var(--navy) 0%, #132d52 55%, #1a4068 100%);
-  position: relative;  /* needed so z-index works on child elements */
-  overflow: hidden;    /* hides the decorative circle if it goes outside */
+  position: relative;  
+  overflow: hidden;  
   display: flex;
-  align-items: center; /* vertically centers the content */
+  align-items: center;
 }
 
-/* Decorative radial glow circle in the bottom-right of the hero */
 .hero-section::after {
-  content: '';   /* required for pseudo-elements to appear */
+  content: '';  
   position: absolute;
   bottom: -120px;
   right: -120px;
@@ -172,10 +89,9 @@ body {
   height: 500px;
   background: radial-gradient(circle, rgba(15,157,142,0.18) 0%, transparent 70%);
   border-radius: 50%;
-  pointer-events: none; /* can't be clicked or hovered */
+  pointer-events: none;
 }
 
-/* The small pill badge above the hero heading */
 .hero-badge {
   background: var(--teal);
   color: var(--white);
@@ -189,7 +105,6 @@ body {
   text-transform: uppercase;
 }
 
-/* Hero main heading size — clamp() scales between a min and max based on viewport */
 .hero-section h1 {
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
@@ -197,51 +112,32 @@ body {
   color: var(--white);
 }
 
-/* The "accent" span inside the h1 — makes the name gold */
 .hero-section h1 .accent {
   color: var(--gold);
 }
 
-/* Lead paragraph below the heading */
 .hero-section .lead {
   color: rgba(255,255,255,0.78);
   font-size: 1.1rem;
   max-width: 520px;
 }
 
-/* The circular avatar box on the right side of the hero */
 .hero-avatar-box {
-  width: 260px;
-  height: 260px;
-  background: rgba(15,157,142,0.15);  /* semi-transparent teal fill */
-  border: 3px solid var(--teal);       /* teal ring border */
-  border-radius: 50%;                  /* makes it a circle */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  animation: float 4s ease-in-out infinite; /* applies the floating animation */
+  width: 200px;
+  height: 200px;       
+  border-radius: 50%;                   
 }
 
-/* Icon inside the avatar circle */
-.hero-avatar-box i {
-  font-size: 8rem;
-  color: var(--teal);
+.profile-photo{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+  object-position: center;
 }
 
-/* Floating animation — moves the avatar up and down smoothly */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }    /* start and end: original position */
-  50%       { transform: translateY(-16px); } /* middle: moved 16px upward */
-}
-
-
-/* ================================================================
-   6. BUTTONS
-   Two custom button styles used as call-to-action links.
-================================================================ */
-
-/* Primary button — solid teal background */
 .btn-teal {
   background: var(--teal);
   color: var(--white);
@@ -249,15 +145,13 @@ body {
   border: none;
   padding: 0.7rem 1.8rem;
   border-radius: 8px;
-  /* transition animates the hover effects smoothly */
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;   /* removes underline from <a> tags */
-  display: inline-flex;    /* lets the icon and text sit side by side */
+  text-decoration: none;   
+  display: inline-flex;   
   align-items: center;
-  gap: 0.5rem;             /* space between icon and text */
+  gap: 0.5rem;             
 }
 
-/* Hover: darker teal + slight upward lift + teal glow shadow */
 .btn-teal:hover {
   background: var(--teal2);
   color: var(--white);
@@ -265,7 +159,6 @@ body {
   box-shadow: 0 8px 22px rgba(15,157,142,0.35);
 }
 
-/* Secondary button — transparent with gold border */
 .btn-outline-gold {
   background: transparent;
   color: var(--gold);
@@ -280,7 +173,6 @@ body {
   gap: 0.5rem;
 }
 
-/* Hover: fills with gold, text turns navy */
 .btn-outline-gold:hover {
   background: var(--gold);
   color: var(--navy);
@@ -288,12 +180,6 @@ body {
   box-shadow: 0 8px 22px rgba(244,169,35,0.3);
 }
 
-
-/* ================================================================
-   7. PAGE HEADER BANNER (about.html, gallery.html, contact.html)
-   The dark banner just below the navbar on inner pages.
-   ::after adds a semi-transparent dark overlay so text stays readable.
-================================================================ */
 .page-header {
   min-height: 280px;
   background: linear-gradient(135deg, var(--navy) 0%, #132d52 60%, #1a4068 100%);
@@ -305,7 +191,6 @@ body {
   text-align: center;
 }
 
-/* Dark overlay on top of the gradient */
 .page-header::after {
   content: '';
   position: absolute;
@@ -313,7 +198,6 @@ body {
   background: rgba(0,0,0,0.35);
 }
 
-/* ph-content sits above the ::after overlay using z-index */
 .page-header .ph-content {
   position: relative;
   z-index: 2;
@@ -329,7 +213,6 @@ body {
   color: rgba(255,255,255,0.75);
 }
 
-/* Breadcrumb: "Home > Page" navigation trail */
 .breadcrumb {
   background: transparent;
   padding: 0;
@@ -345,28 +228,18 @@ body {
   color: rgba(255,255,255,0.6);
 }
 
-/* The " / " separator between breadcrumb items */
 .breadcrumb-item + .breadcrumb-item::before {
   color: rgba(255,255,255,0.4);
 }
 
-
-/* ================================================================
-   8. SECTION COMMON RULES
-   These rules apply to all <section> elements.
-================================================================ */
-
-/* Consistent vertical padding on every section */
 section {
   padding: 72px 0;
 }
 
-/* Alternating section background — off-white for visual separation */
 section.bg-light-custom {
   background: var(--light);
 }
 
-/* Section heading: scales responsively with clamp() */
 section h2 {
   font-weight: 800;
   color: var(--navy);
@@ -374,18 +247,11 @@ section h2 {
   letter-spacing: -0.4px;
 }
 
-/* Sub-heading text under section headings */
 section p.sub-text {
   color: var(--muted);
   font-size: 1rem;
 }
 
-
-/* ================================================================
-   9. CARDS — SHARED RULES
-   All Bootstrap .card elements get rounded corners, a light border,
-   and a hover lift animation.
-================================================================ */
 .card {
   border-radius: 14px !important;
   border: 1px solid var(--border) !important;
@@ -398,7 +264,6 @@ section p.sub-text {
   box-shadow: 0 18px 40px rgba(11,30,61,0.10) !important; /* soft navy shadow */
 }
 
-/* Overview cards (Quick Overview section on index.html) */
 .ov-card {
   background: var(--white);
   border-radius: 14px;
@@ -443,11 +308,7 @@ section p.sub-text {
 }
 
 
-/* ================================================================
-   10. BADGE / TAG PILLS
-   Small pill-shaped labels used to categorize content
-   (skills, photo categories, course subjects, etc.)
-================================================================ */
+/* 10. BADGE*/
 .tag {
   display: inline-block;
   padding: 0.28rem 0.8rem;
@@ -464,11 +325,7 @@ section p.sub-text {
 .tag-purple { background: rgba(124,58,237,0.10);   color: #7c3aed; }
 
 
-/* ================================================================
-   11. FOOTER
-   Dark navy footer appearing at the bottom of every page.
-   border-top adds the teal accent line above the footer.
-================================================================ */
+/*11. FOOTER */
 footer {
   background: var(--navy);
   color: rgba(255,255,255,0.75);
@@ -522,11 +379,8 @@ footer .copy {
 }
 
 
-/* ================================================================
-   12. ABOUT PAGE STYLES
-================================================================ */
+/* 12. ABOUT PAGE STYLES*/
 
-/* ── Profile Box (dark navy card on the left of the biography) ── */
 .profile-box {
   background: linear-gradient(160deg, var(--navy) 0%, #132d52 100%);
   border-radius: 18px;
@@ -535,7 +389,6 @@ footer .copy {
   color: var(--white);
 }
 
-/* Circular avatar ring inside the profile box */
 .profile-box .avatar-ring {
   width: 120px;
   height: 120px;
@@ -590,42 +443,11 @@ footer .copy {
 .detail-row .dr-val    { color: var(--white); font-weight: 600; }
 
 /* ── Timeline (Education section) ── */
-/* The wrapper holds all timeline entries and draws the vertical line */
 .tl-wrap {
   position: relative;
-  padding-left: 2.8rem; /* space for the vertical line and dots */
+  padding-left: 2.8rem;
 }
 
-/* Vertical connecting line drawn using ::before pseudo-element */
-.tl-wrap::before {
-  content: '';
-  position: absolute;
-  left: 20px;  /* horizontally centered under the dots */
-  top: 4px;
-  bottom: 4px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--teal), var(--gold));
-  border-radius: 2px;
-}
-
-/* Container for each single timeline entry */
-.tl-item {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-/* The circle/dot on the timeline line */
-.tl-dot {
-  position: absolute;
-  left: -2.45rem; /* positioned to sit on the vertical line */
-  top: 6px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 3px solid var(--teal); /* default: teal ring */
-  background: var(--white);       /* white fill so the line behind is hidden */
-  z-index: 1;
-}
 
 /* Gold variant for completed qualifications */
 .tl-dot.gold { border-color: var(--gold); }
@@ -645,7 +467,6 @@ footer .copy {
 .tl-card .inst { color: var(--teal); font-size: 0.88rem; font-weight: 600; }
 .tl-card p    { color: var(--muted); font-size: 0.88rem; margin: 0.5rem 0 0; }
 
-/* Status badges inside timeline cards */
 .tl-badge {
   display: inline-block;
   padding: 0.22rem 0.75rem;
@@ -658,7 +479,6 @@ footer .copy {
 .tl-badge.done     { background: rgba(244,169,35,0.15);  color: var(--gold2); }
 
 /* ── Education Summary Table ── */
-/* Header row gets a dark navy background with white text */
 .edu-table thead th {
   background: var(--navy);
   color: var(--white);
@@ -673,19 +493,7 @@ footer .copy {
   border-color: var(--border);
 }
 
-/* ── Technical Skills Progress Bars ── */
-/* Row above the bar: skill name (left) and percentage (right) */
-.skill-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 0.35rem;
-}
-
-/* Percentage shown in teal */
-.skill-label span:last-child { color: var(--teal); }
+  
 
 /* The grey track that the colored bar sits inside */
 .prog-track {
@@ -784,16 +592,9 @@ footer .copy {
   justify-content: center;
   font-size: 3.8rem; /* large icon size */
   position: relative;
+  
 }
 
-/* Six color variants for thumbnail backgrounds
-   Each uses a two-color diagonal gradient at very low opacity */
-.g-thumb.c1 { background: linear-gradient(135deg, #0b1e3d18, #0f9d8e22); color: var(--teal); }
-.g-thumb.c2 { background: linear-gradient(135deg, #f4a92318, #f4a92333); color: var(--gold2); }
-.g-thumb.c3 { background: linear-gradient(135deg, #7c3aed18, #7c3aed22); color: #7c3aed; }
-.g-thumb.c4 { background: linear-gradient(135deg, #0b1e3d18, #132d5222); color: var(--navy); }
-.g-thumb.c5 { background: linear-gradient(135deg, #0f9d8e18, #0f9d8e22); color: var(--teal2); }
-.g-thumb.c6 { background: linear-gradient(135deg, #dc354518, #dc354522); color: #dc3545; }
 
 /* Card body below the thumbnail */
 .g-body { padding: 1rem 1.1rem 1.2rem; }
@@ -954,12 +755,7 @@ footer .copy {
 }
 
 
-/* ================================================================
-   15. RESPONSIVE BREAKPOINTS
-   These rules adjust the layout at smaller screen sizes.
-   @media (max-width: Xpx) means: apply these rules ONLY when the
-   screen width is Xpx or less.
-================================================================ */
+/* 15. RESPONSIVE BREAKPOINTS */
 
 /* Tablets and smaller (below 992px) */
 @media (max-width: 991px) {

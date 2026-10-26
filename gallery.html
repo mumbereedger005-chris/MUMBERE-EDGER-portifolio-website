@@ -1,67 +1,39 @@
 <!DOCTYPE html>
-<!-- DOCTYPE declares HTML5 — must always be the very first line -->
 
 <html lang="en">
-<!-- lang="en" tells browsers and assistive tools the page is in English -->
-
 <head>
-  <!-- ============================================================
-       HEAD SECTION — not visible on the page, contains page settings
-  ============================================================ -->
-
-  <!-- Allows all characters (letters, symbols, accents) to display correctly -->
   <meta charset="UTF-8" />
-
-  <!-- Makes the page scale correctly on phones and tablets (responsive design) -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Text shown on the browser tab -->
   <title>Gallery | Mumbere Edger</title>
 
-  <!-- Bootstrap 5 CSS — gives us the grid, utility classes, navbar, etc. -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- Bootstrap Icons — icon library used with <i class="bi bi-..."></i> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-
-  <!-- Google Fonts: Inter — the modern sans-serif font used across the site -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-
-  <!-- Our custom CSS with all the colors, card styles, and layout rules -->
   <link rel="stylesheet" href="css/style.css" />
 
 </head>
 
 <body>
 
-  <!-- ============================================================
-       NAVIGATION BAR
-       Sticky at the top — stays visible as you scroll.
-       "active" is on "Gallery" because this is gallery.html.
-  ============================================================ -->
+<!--NAVIGATION BAR-->
   <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
     <div class="container">
 
-      <!-- Brand logo — always links to the home page -->
       <a class="navbar-brand fw-bold" href="index.html">
-        <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>
-        <span>Mumbere</span> <span style="color:var(--gold);">Edger</span>
+        <i class="bi bi-code-slash me-2"></i>
+        <span <span style="color:var(--gold);">Mumbere</span> <span style="color:var(--gold);">Edger</span>
       </a>
 
-      <!-- Hamburger toggle button — only appears on small screens (phones/tablets).
-           Clicking it shows/hides the nav links below -->
       <button class="navbar-toggler border-0" type="button"
               data-bs-toggle="collapse" data-bs-target="#mainNav"
               aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="bi bi-list text-white fs-4"></i>
       </button>
 
-      <!-- Navigation links — collapse to hamburger on mobile -->
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto gap-lg-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <!-- "active" class highlights this link since we are on gallery.html -->
           <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
@@ -69,134 +41,24 @@
 
     </div>
   </nav>
-  <!-- END NAVBAR -->
 
-
-  <!-- ============================================================
-       PAGE HEADER BANNER
-       Dark gradient banner with overlay — same style used on
-       about.html and contact.html for consistency.
-  ============================================================ -->
+<!-- PAGE HEADER BANNER -->
   <section class="page-header">
-    <!-- ph-content sits above the dark overlay (z-index set in CSS) -->
+   
     <div class="ph-content container">
       <h1>Gallery</h1>
       <p class="lead mt-2">My motivation story, experiences, and memorable moments</p>
 
-      <!-- Breadcrumb: shows "Home > Gallery" navigation path -->
       <nav aria-label="breadcrumb" class="mt-3">
         <ol class="breadcrumb justify-content-center">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <!-- aria-current="page" marks this as the active/current page -->
           <li class="breadcrumb-item active" aria-current="page">Gallery</li>
         </ol>
       </nav>
     </div>
   </section>
-  <!-- END PAGE HEADER -->
-
-
-  <!-- ============================================================
-       SECTION 1: SELF-MOTIVATION VIDEO (MANDATORY)
-       The HTML5 <video> element lets you embed a local video file.
-       The .ratio .ratio-16x9 wrapper keeps the video in 16:9
-       aspect ratio on all screen sizes (like a YouTube video frame).
-  ============================================================ -->
-  <section>
-    <div class="container">
-
-      <!-- Section heading -->
-      <div class="text-center mb-5">
-        <!-- Small red tag above the heading to highlight this as featured -->
-        <span class="tag tag-red" style="font-size:0.85rem; padding:0.4rem 1rem;">
-          <i class="bi bi-camera-video-fill me-1"></i> Featured Video
-        </span>
-        <h2 class="mt-3">My Motivation &amp; Journey</h2>
-        <p class="sub-text mt-2">
-          Watch me share why I chose Information Technology and what drives me forward
-        </p>
-        <div class="divider mx-auto mt-3"></div>
-      </div>
-
-      <!-- Center the video in the page using Bootstrap's justify-content-center -->
-      <div class="row justify-content-center">
-        <!-- Video is 8 of 12 columns wide on large screens (col-lg-8) -->
-        <div class="col-lg-8">
-
-          <!-- .video-wrap = teal border + rounded corners + shadow (from style.css) -->
-          <div class="video-wrap">
-
-            <!-- ratio ratio-16x9 = Bootstrap responsive video wrapper.
-                 It keeps the video at 16:9 ratio on all screen sizes -->
-            <div class="ratio ratio-16x9">
-
-              <!-- =====================================================
-                   HTML5 VIDEO ELEMENT
-                   controls  = shows play, pause, volume, fullscreen bar
-                   poster    = image shown before the video plays
-                   aria-label= describes the video for screen readers
-
-                   HOW TO ADD YOUR VIDEO:
-                   Option A (Local file): Save your video as
-                     media/motivation-video.mp4
-                   The src below already points there — just add the file.
-
-                   Option B (YouTube): Delete the <video> block below and
-                   replace it with this iframe (swap YOUR_VIDEO_ID):
-                   <iframe
-                     src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                     title="Mumbere Edger — My Motivation Video"
-                     allowfullscreen
-                     allow="accelerometer; autoplay; clipboard-write;
-                            encrypted-media; gyroscope; picture-in-picture">
-                   </iframe>
-              ===================================================== -->
-              <video
-                controls
-                poster="media/video-poster.jpg"
-                aria-label="Mumbere Edger self-motivation video">
-
-                <!-- <source> tells the browser where the video file is.
-                     type="video/mp4" = the file format -->
-                <source src="media/motivation-video.mp4" type="video/mp4" />
-
-                <!-- Fallback text — shown if the browser cannot play HTML5 video -->
-                Your browser does not support HTML5 video.
-                <a href="media/motivation-video.mp4">Download the video</a>
-              </video>
-
-            </div><!-- end .ratio -->
-
-            <!-- Caption bar below the video — dark background for contrast -->
-            <div class="video-caption">
-              <i class="bi bi-play-circle-fill me-2" style="color:var(--gold);"></i>
-              <strong>Why I Chose Information Technology</strong> —
-              In this video I share my personal motivation for pursuing a degree at Bugema University,
-              the challenges I've overcome, and the impact I hope to make in the tech world.
-            </div>
-
-          </div><!-- end .video-wrap -->
-        </div><!-- end col-lg-8 -->
-      </div><!-- end .row -->
-
-    </div><!-- end .container -->
-  </section>
-  <!-- END VIDEO SECTION -->
-
-
-  <!-- ============================================================
-       SECTION 2: PHOTO GALLERY GRID
-       A responsive Bootstrap grid of 9 image cards.
-       Each card has: a thumbnail area, title, caption, and a tag.
-
-       HOW TO ADD REAL PHOTOS:
-       1. Put your image files in the  media/photos/  folder
-       2. In each card, find the comment that says "Replace the icon..."
-       3. Delete the <i class="bi bi-..."> icon
-       4. Paste an <img> tag like this instead:
-          <img src="media/photos/yourfile.jpg" alt="Description"
-               style="width:100%; height:100%; object-fit:cover;">
-  ============================================================ -->
+ 
+ <!--SECTION 1: PHOTO GALLERY GRID -->
   <section class="bg-light-custom">
     <div class="container">
 
@@ -204,48 +66,34 @@
       <div class="text-center mb-5">
         <h2>Photo Gallery</h2>
         <p class="sub-text mt-2">Snapshots of my academic life, activities, and projects</p>
-        <div class="divider mx-auto mt-3"></div>
       </div>
-
-      <!-- Gallery grid: 3 cards per row on large screens (col-lg-4 = 4/12 columns),
-           2 per row on tablets (col-sm-6 = 6/12 columns),
-           1 per row on phones (default, no col- prefix) -->
       <div class="row g-4">
 
-        <!-- ─────────────────── GALLERY CARD 1 ─────────────────── -->
+<!--  GALLERY CARD 1-->
         <div class="col-sm-6 col-lg-4">
-          <!-- .g-card = gallery card styled in style.css (hover lift effect) -->
           <div class="g-card h-100">
-
-            <!-- Thumbnail area — .c1 gives it a teal-tinted gradient background -->
             <div class="g-thumb c1">
-              <!-- Replace this icon with your real photo (see instructions above) -->
-              <i class="bi bi-person-circle"></i>
+              <img src="EDDY.png" alt="Mumbere edger photo"  style="width:100%; height:100%; object-fit:cover;" >
             </div>
 
-            <!-- Card body: title, caption, category tag -->
+<!-- Card body-->
             <div class="g-body">
               <h6>Professional Headshot</h6>
               <p>A formal portrait representing my professional identity as an IT student.</p>
-              <!-- Tag pill: shows which category this photo belongs to -->
-              <span class="tag tag-teal">Profile</span>
             </div>
           </div>
         </div>
 
-        <!-- ─────────────────── GALLERY CARD 2 ─────────────────── -->
+<!--GALLERY CARD 2-->
         <div class="col-sm-6 col-lg-4">
           <div class="g-card h-100">
-            <!-- .c2 = gold-tinted gradient background -->
             <div class="g-thumb c2">
-              <!-- Replace with: <img src="media/photos/campus.jpg" alt="Bugema University campus"
-                   style="width:100%; height:100%; object-fit:cover;"> -->
-              <i class="bi bi-building"></i>
+               <img src="campus.png" alt="Bugema University campus"
+                   style="width:100%; height:100%; object-fit:cover;">
             </div>
             <div class="g-body">
               <h6>Bugema University — Kampala Campus</h6>
               <p>My home campus where I am pursuing my B.Sc. in Information Technology.</p>
-              <span class="tag tag-gold">Campus Life</span>
             </div>
           </div>
         </div>
@@ -253,15 +101,13 @@
         <!-- ─────────────────── GALLERY CARD 3 ─────────────────── -->
         <div class="col-sm-6 col-lg-4">
           <div class="g-card h-100">
-            <!-- .c3 = purple-tinted gradient background -->
-            <div class="g-thumb c3">
-              <!-- Replace with: <img src="media/photos/project-portfolio.jpg" ...> -->
-              <i class="bi bi-laptop"></i>
+            <div class="g-thumb c4">
+                 <img src="team.png" alt="Bugema University Teamwork"
+                   style="width:100%; height:100%; object-fit:cover;">
             </div>
             <div class="g-body">
-              <h6>Portfolio Website Project</h6>
-              <p>Screenshot of my personal portfolio site built with HTML5, CSS3, and Bootstrap 5.</p>
-              <span class="tag tag-purple">Projects</span>
+              <h6>Campus Tech Workshop</h6>
+              <p>Participating in a technology workshop on campus, gaining hands-on experience.</p>
             </div>
           </div>
         </div>
@@ -269,26 +115,9 @@
         <!-- ─────────────────── GALLERY CARD 4 ─────────────────── -->
         <div class="col-sm-6 col-lg-4">
           <div class="g-card h-100">
-            <!-- .c4 = dark navy-tinted gradient background -->
-            <div class="g-thumb c4">
-              <!-- Replace with: <img src="media/photos/workshop.jpg" ...> -->
-              <i class="bi bi-people-fill"></i>
-            </div>
-            <div class="g-body">
-              <h6>Campus Tech Workshop</h6>
-              <p>Participating in a technology workshop on campus, gaining hands-on experience.</p>
-              <span class="tag tag-navy">Events</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ─────────────────── GALLERY CARD 5 ─────────────────── -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="g-card h-100">
-            <!-- .c5 = lighter teal-tinted gradient background -->
             <div class="g-thumb c5">
-              <!-- Replace with: <img src="media/photos/library.jpg" ...> -->
-              <i class="bi bi-book-fill"></i>
+                 <img src="Library.png" alt="Bugema University library"
+                   style="width:100%; height:100%; object-fit:cover;">
             </div>
             <div class="g-body">
               <h6>Library Study Session</h6>
@@ -298,93 +127,40 @@
           </div>
         </div>
 
-        <!-- ─────────────────── GALLERY CARD 6 ─────────────────── -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="g-card h-100">
-            <!-- .c6 = red-tinted gradient background -->
-            <div class="g-thumb c6">
-              <!-- Replace with: <img src="media/photos/db-project.jpg" ...> -->
-              <i class="bi bi-database-fill"></i>
-            </div>
-            <div class="g-body">
-              <h6>Database Management System</h6>
-              <p>A university project showcasing relational database design using MySQL.</p>
-              <span class="tag tag-purple">Projects</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- ─────────────────── GALLERY CARD 7 ─────────────────── -->
+        <!-- ─────────────────── GALLERY CARD 5 ─────────────────── -->
         <div class="col-sm-6 col-lg-4">
           <div class="g-card h-100">
             <div class="g-thumb c1">
-              <!-- Replace with: <img src="media/photos/ceremony.jpg" ...> -->
-              <i class="bi bi-trophy-fill"></i>
+               <img src="event.png" alt="Bugema University event"
+                   style="width:100%; height:100%; object-fit:cover;">
             </div>
             <div class="g-body">
               <h6>Campus Recognition Event</h6>
               <p>Representing excellence at a campus academic event and recognition ceremony.</p>
-              <span class="tag tag-navy">Events</span>
             </div>
           </div>
         </div>
 
-        <!-- ─────────────────── GALLERY CARD 8 ─────────────────── -->
-        <div class="col-sm-6 col-lg-4">
-          <div class="g-card h-100">
-            <div class="g-thumb c2">
-              <!-- Replace with: <img src="media/photos/casual.jpg" ...> -->
-              <i class="bi bi-camera-fill"></i>
-            </div>
-            <div class="g-body">
-              <h6>Behind The Scenes</h6>
-              <p>A casual day on campus — always ready to learn and take on new challenges.</p>
-              <span class="tag tag-teal">Profile</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- ─────────────────── GALLERY CARD 9 ─────────────────── -->
+        <!-- ─────────────────── GALLERY CARD 6 ─────────────────── -->
         <div class="col-sm-6 col-lg-4">
           <div class="g-card h-100">
             <div class="g-thumb c3">
-              <!-- Replace with: <img src="media/photos/comp-lab.jpg" ...> -->
-              <i class="bi bi-pc-display-horizontal"></i>
+                 <img src="computer.png" alt="Bugema University computer"
+                   style="width:100%; height:100%; object-fit:cover;">
             </div>
             <div class="g-body">
               <h6>Computer Lab Session</h6>
               <p>Hands-on practical sessions in the IT computer lab — where theory meets practice.</p>
-              <span class="tag tag-gold">Campus Life</span>
             </div>
           </div>
         </div>
-
-      </div><!-- end gallery grid row -->
-
-
-      <!-- INFO BOX: How to add your own photos -->
-      <div class="mt-5 p-3 rounded-3 d-flex gap-3 align-items-start"
-           style="background:rgba(15,157,142,0.07); border:1px solid rgba(15,157,142,0.2);">
-        <i class="bi bi-info-circle-fill flex-shrink-0 mt-1"
-           style="color:var(--teal); font-size:1.2rem;"></i>
-        <p class="mb-0" style="font-size:0.88rem; color:var(--muted);">
-          <strong style="color:var(--navy);">Adding your own photos:</strong>
-          Place your image files inside <code>media/photos/</code>.
-          Then in each card find the icon (<code>&lt;i class="bi bi-..."&gt;</code>)
-          and replace it with:
-          <code>&lt;img src="media/photos/yourfile.jpg" alt="description"
-          style="width:100%; height:100%; object-fit:cover;"&gt;</code>
-        </p>
       </div>
-
-    </div><!-- end .container -->
+    </div>
   </section>
-  <!-- END PHOTO GALLERY SECTION -->
-
-
-  <!-- ============================================================
-       FOOTER — identical on every page
-  ============================================================ -->
+  
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="row g-4 pb-3">
@@ -392,9 +168,9 @@
         <!-- Bio -->
         <div class="col-md-4">
           <h5 class="mb-3">
-            <i class="bi bi-code-slash me-2" style="color:var(--teal);"></i>Mumbere Edger
+            <i class="bi bi-code-slash me-2"></i>Mumbere Edger
           </h5>
-          <p style="font-size:0.88rem; color:rgba(255,255,255,0.55);">
+          <p style="font-size:0.88rem; color:orange;">
             IT Student at Bugema University, Kampala Campus. Passionate about
             technology and building meaningful digital experiences.
           </p>
@@ -413,15 +189,14 @@
         <div class="col-md-4">
           <h6 class="mb-3">Connect With Me</h6>
           <div class="d-flex gap-3 mb-3">
-            <a href="#" class="social-link" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
             <a href="#" class="social-link" title="GitHub"><i class="bi bi-github"></i></a>
             <a href="#" class="social-link" title="Twitter"><i class="bi bi-twitter-x"></i></a>
-            <a href="mailto:edger@bugema.ac.ug" class="social-link" title="Email">
+            <a href="mailto:mumbereedger005@gmail.com" class="social-link" title="Email">
               <i class="bi bi-envelope-fill"></i>
             </a>
           </div>
           <p style="font-size:0.85rem; color:rgba(255,255,255,0.5);">
-            <i class="bi bi-geo-alt me-1" style="color:var(--teal);"></i>Kampala, Uganda
+            <i class="bi bi-geo-alt me-1"></i>Kampala, Uganda
           </p>
         </div>
 
@@ -430,8 +205,6 @@
       <p class="copy">&copy; 2026 Mumbere Edger. All rights reserved. | Bugema University — Kampala Campus</p>
     </div>
   </footer>
-  <!-- END FOOTER -->
-
 
   <!-- Bootstrap JS bundle — needed for the mobile hamburger menu toggle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
